@@ -4,23 +4,32 @@ const Footer = () => {
   return (
     <div>
       <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
-        <nav className="grid grid-flow-col gap-4">
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
-        </nav>
+        <ul className="grid grid-flow-col gap-4">
+          <li>
+            <a>About us</a>
+          </li>
+          <li>
+            <a>Contact</a>
+          </li>
+          <li>
+            <a>Jobs</a>
+          </li>
+          <li>
+            <a>Press kit</a>
+          </li>
+        </ul>
         <nav>
           <div className="grid grid-flow-col gap-4">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
                 width="24"
                 height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
+                viewBox="0 0 30 30"
               >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                <path d="M 6 4 C 4.895 4 4 4.895 4 6 L 4 24 C 4 25.105 4.895 26 6 26 L 24 26 C 25.105 26 26 25.105 26 24 L 26 6 C 26 4.895 25.105 4 24 4 L 6 4 z M 8.6484375 9 L 13.259766 9 L 15.951172 12.847656 L 19.28125 9 L 20.732422 9 L 16.603516 13.78125 L 21.654297 21 L 17.042969 21 L 14.056641 16.730469 L 10.369141 21 L 8.8945312 21 L 13.400391 15.794922 L 8.6484375 9 z M 10.878906 10.183594 L 17.632812 19.810547 L 19.421875 19.810547 L 12.666016 10.183594 L 10.878906 10.183594 z"></path>
               </svg>
             </a>
             <a>

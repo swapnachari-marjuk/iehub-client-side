@@ -4,7 +4,7 @@ import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { googleSignIn} = useAuth();
+  const { googleSignIn } = useAuth();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
