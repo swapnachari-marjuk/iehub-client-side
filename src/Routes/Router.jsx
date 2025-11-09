@@ -3,6 +3,10 @@ import Home from "../Pages/Home";
 import MainLayout from "../Layouts/MainLayout";
 import Register from "../Components/Register";
 import Login from "../Components/Login";
+import MyImport from "../Pages/MyImport";
+import MyExport from "../Pages/MyExport";
+import AddExport from "../Pages/AddExport";
+import AllProducts from "../Pages/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +16,27 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+
+      {
+        path: "/allProducts",
+        element: <AllProducts />,
+      },
+      {
+        path: "/myImport",
+        element: <MyImport />,
+      },
+      {
+        path: "/myExport",
+        element: <MyExport />,
+      },
+      {
+        path: "/myExport",
+        element: <MyExport />,
+      },
+      {
+        path: "/addExport",
+        element: <AddExport />,
       },
 
       {

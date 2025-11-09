@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router";
 import Logo from "./Utility/Logo";
+import useAuth from "../hooks/useAuth";
+import { CircleLoader } from "react-spinners";
 
 const Navbar = () => {
+  const { loading, user, userSignOut } = useAuth();
   const links = (
     <>
       <li>
-        <Link to={"/allProducts"}>All Products</Link>
+        <Link to={"/allProducts"}>
+          All Products
+        </Link>
       </li>
       <li>
         <Link to={"/myExport"}>My Export</Link>
@@ -56,12 +61,40 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to={"/register"} className="btn btn-primary">
-            Register
-          </Link>
-          <Link to={"login"} className="btn btn-ghost btn-outline text-primary">
-            Login
-          </Link>
+          {loading ? (
+            <CircleLoader color="#0707f4" size={30} speedMultiplier={0} />
+          ) : user ? (
+            <div className="flex gap-2 items-center">
+              <img
+                title={user.displayName}
+                className=" w-10 rounded-full"
+                src={user.photoURL}
+                alt=""
+              />
+              <button
+                className="btn lg:btn btn-sm btn-primary"
+                onClick={() =>
+                  userSignOut()
+                    .then((result) => console.log(result))
+                    .catch((err) => console.log(err))
+                }
+              >
+                LogOut
+              </button>
+            </div>
+          ) : (
+            <div>
+              <Link to={"/register"} className="btn lg:btn btn-sm btn-primary">
+                Register
+              </Link>
+              <Link
+                to={"login"}
+                className="btn btn-ghost lg:btn btn-sm  btn-outline text-primary"
+              >
+                Login
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

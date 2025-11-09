@@ -1,8 +1,10 @@
 import { Link } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import Logo from "./Utility/Logo";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+  const { googleSignIn} = useAuth();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,7 +14,9 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    console.log("Google login clicked");
+    googleSignIn()
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err.message));
   };
 
   return (

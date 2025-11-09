@@ -1,8 +1,12 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
+  const { googleSignIn } = useAuth();
+  const navigate = useNavigate()
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +17,15 @@ const Register = () => {
       password: form.password.value,
     };
     console.log("User Data:", userData);
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result);
+        navigate("/")
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
@@ -75,7 +88,7 @@ const Register = () => {
           </button>
         </form>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full">
+        <button className="btn btn-outline w-full" onClick={handleGoogleLogin}>
           <FcGoogle className="text-xl" />
           Continue with Google
         </button>
