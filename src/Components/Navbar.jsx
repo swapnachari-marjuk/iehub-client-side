@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
 import { CircleLoader } from "react-spinners";
@@ -9,18 +9,16 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link to={"/allProducts"}>
-          All Products
-        </Link>
+        <NavLink to={"/allProducts"}>All Products</NavLink>
       </li>
       <li>
-        <Link to={"/myExport"}>My Export</Link>
+        <NavLink to={"/myExport"}>My Export</NavLink>
       </li>
       <li>
-        <Link to={"/myImport"}>My Import</Link>
+        <NavLink to={"/myImport"}>My Import</NavLink>
       </li>
       <li>
-        <Link to={"/addExport"}>Add Export</Link>
+        <NavLink to={"/addExport"}>Add Export</NavLink>
       </li>
     </>
   );

@@ -10,3 +10,7 @@
 li > a {
   @apply hover:underline decoration-blue-600 hover:text-blue-600 cursor-pointer;
 }
+
+.active{
+  @apply underline decoration-blue-600 text-blue-600 
+}

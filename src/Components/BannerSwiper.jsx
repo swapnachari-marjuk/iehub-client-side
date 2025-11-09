@@ -17,7 +17,7 @@ const BannerSwiper = () => {
         loop
         autoplay={{ delay: 3000, disableOnInteraction: true }}
         modules={[Autoplay]}
-        className="mySwiper"
+        className="mySwiper overflow-x-hidden"
       >
         <SwiperSlide>
           <BannerFirst></BannerFirst>

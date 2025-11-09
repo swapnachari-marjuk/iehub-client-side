@@ -7,6 +7,8 @@ import MyImport from "../Pages/MyImport";
 import MyExport from "../Pages/MyExport";
 import AddExport from "../Pages/AddExport";
 import AllProducts from "../Pages/AllProducts";
+import Details from "../Pages/Details";
+import PrivetRout from "./PrivetRout";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,15 @@ const router = createBrowserRouter([
       {
         path: "/addExport",
         element: <AddExport />,
+      },
+
+      {
+        path: "/viewDetails/:id",
+        element: (
+          <PrivetRout>
+            <Details />
+          </PrivetRout>
+        ),
       },
 
       {
