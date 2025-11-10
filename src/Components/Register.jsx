@@ -2,6 +2,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { googleSignIn, createUser, updateUser } = useAuth();
@@ -24,24 +25,23 @@ const Register = () => {
 
     createUser(email, password)
       .then(() => {
-        console.log("successfully user created");
+         toast.success("Your account has been created successfully.")
 
         updateUser({ displayName, photoURL })
           .then(() => console.log("successfully updated user"))
-          .catch((err) => console.log(err.message));
+          .catch((err) => toast.warning(err.message));
 
         navigate("/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.warning(err.message));
   };
 
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         navigate("/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.warning(err.message));
   };
 
   return (

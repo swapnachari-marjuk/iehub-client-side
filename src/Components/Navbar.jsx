@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
 import { CircleLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { loading, user, userSignOut } = useAuth();
@@ -71,10 +73,29 @@ const Navbar = () => {
               />
               <button
                 className="btn lg:btn btn-sm btn-primary"
-                onClick={() =>
-                  userSignOut()
-                    .then(() => "")
-                    .catch((err) => console.log(err))
+                onClick={
+                  () =>
+                    Swal.fire({
+                      title: "Are you sure to logout?",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: "Logout",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        userSignOut()
+                          .then(() =>
+                            Swal.fire({
+                              title: "LoggedOut",
+                              text: "You are logged out successfully",
+                              icon: "success",
+                            })
+                          )
+                          .catch((err) => toast.warning(err));
+                      }
+                    })
+                  //
                 }
               >
                 LogOut

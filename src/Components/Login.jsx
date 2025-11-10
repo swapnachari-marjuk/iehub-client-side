@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { googleSignIn, userSignIn } = useAuth();
@@ -14,10 +15,10 @@ const Login = () => {
     const password = form.password.value;
     userSignIn(email, password)
       .then(() => {
+        toast.success("You are logged in successfully.")
         navigate(location.state || "/");
       })
-      .catch((err) => console.log(err));
-      // {email: 'marjukmujaddedi@gmail.com', password: 'test-Marjuk1'}
+      .catch((err) => toast.warning(err.message));
   };
 
   const handleGoogleLogin = () => {
@@ -25,7 +26,7 @@ const Login = () => {
       .then(() => {
         navigate(location.state);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.warning(err.message));
   };
 
   return (

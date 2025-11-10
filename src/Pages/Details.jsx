@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
-import useAxios from "../hooks/useAxios";
+// import useAxios from "../hooks/useAxios";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Details = () => {
-  const axiosInstance = useAxios();
+  // const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { id } = useParams();
   const [productData, setProductData] = useState([]);
@@ -12,10 +14,10 @@ const Details = () => {
   const modalRef = useRef();
 
   useEffect(() => {
-    axiosInstance.get(`imports/${id}`).then((axiosData) => {
+    axiosSecure.get(`products/${id}`).then((axiosData) => {
       setProductData(axiosData.data[0]);
     });
-  }, [axiosInstance, id]);
+  }, [axiosSecure, id]);
 
   const handleQuantity = (e) => {
     const value = e.target.value;
@@ -30,6 +32,7 @@ const Details = () => {
     const import_country = e.target.country.value;
 
     const importData = {
+      product_id: id,
       importer_name,
       importer_email,
       import_quantity,
@@ -37,7 +40,17 @@ const Details = () => {
       import_country,
     };
 
-    console.log(importData);
+    axiosSecure
+      .post("/imports", importData)
+      .then((response) => {
+        console.log("after secure call", response);
+        e.target.reset();
+        setImportQuantity("");
+        modalRef.current.close()
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const {
@@ -126,7 +139,7 @@ const Details = () => {
         </div>
       </div>
 
-      {/* Buttons */}
+      {/* modal button */}
       <div className="flex justify-end gap-3 mt-6">
         <button
           className="btn btn-primary"
@@ -139,8 +152,8 @@ const Details = () => {
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div>
-            <h3 className="text-xl font-bold">
-              Give your information to import this product
+            <h3 className="text-xl font-bold text-center">
+              Provide Importer Information
             </h3>
 
             <form onSubmit={handleImportData} className="card-body">
@@ -174,17 +187,17 @@ const Details = () => {
                     type="text"
                     className="input w-full"
                     name="country"
-                    placeholder="Import Country"
+                    placeholder="e.g. Bangladesh"
                   />
                 </div>
                 {/* quantity field */}
                 <div>
-                  <label className="label">How much</label>
+                  <label className="label">Quantity to import</label>
                   <input
                     type="number"
                     className="input w-full"
                     name="quantity"
-                    placeholder="Product quantity to import"
+                    placeholder="e.g. 25"
                     value={importQuantity}
                     onChange={handleQuantity}
                   />
@@ -205,7 +218,7 @@ const Details = () => {
             </form>
 
             <form method="dialog">
-              <button className="btn border-0 w-full">Close</button>
+              <button className="btn border-0 w-full">Cancel Import</button>
             </form>
           </div>
         </div>

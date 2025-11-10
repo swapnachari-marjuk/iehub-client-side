@@ -8,7 +8,7 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axiosInstance.get("/latest-imports").then((axiosData) => {
+    axiosInstance.get("/latest-products").then((axiosData) => {
       setData(axiosData.data);
     });
   }, [axiosInstance]);

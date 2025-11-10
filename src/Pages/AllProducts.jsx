@@ -6,7 +6,7 @@ const AllProducts = () => {
   const axiosInstance = useAxios();
   const [data, setData] = useState([]);
   useEffect(() => {
-    axiosInstance.get("/imports").then((axiosData) => {
+    axiosInstance.get("/products").then((axiosData) => {
       setData(axiosData.data);
     });
   }, [axiosInstance]);
