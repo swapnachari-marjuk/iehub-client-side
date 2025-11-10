@@ -5,7 +5,6 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Details = () => {
-  // const axiosInstance = useAxios();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { id } = useParams();
@@ -18,40 +17,6 @@ const Details = () => {
       setProductData(axiosData.data[0]);
     });
   }, [axiosSecure, id]);
-
-  const handleQuantity = (e) => {
-    const value = e.target.value;
-    setImportQuantity(value);
-  };
-
-  const handleImportData = (e) => {
-    e.preventDefault();
-    const importer_name = e.target.name.value;
-    const importer_email = e.target.email.value;
-    const import_quantity = e.target.quantity.value;
-    const import_country = e.target.country.value;
-
-    const importData = {
-      product_id: id,
-      importer_name,
-      importer_email,
-      import_quantity,
-      imported_at: new Date().toLocaleTimeString(),
-      import_country,
-    };
-
-    axiosSecure
-      .post("/imports", importData)
-      .then((response) => {
-        console.log("after secure call", response);
-        e.target.reset();
-        setImportQuantity("");
-        modalRef.current.close()
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   const {
     product_image,
@@ -70,6 +35,55 @@ const Details = () => {
     status,
     _id,
   } = productData;
+
+  const handleQuantity = (e) => {
+    const value = e.target.value;
+    setImportQuantity(value);
+  };
+
+  const [available, setAvailable] = useState(0);
+
+  useEffect(() => {
+    if (productData?.available_quantity) {
+      setAvailable(available_quantity);
+    }
+  }, [available_quantity, productData]);
+
+  const handleImportData = (e) => {
+    e.preventDefault();
+    const importer_name = e.target.name.value;
+    const importer_email = e.target.email.value;
+    const import_quantity = e.target.quantity.value;
+    const import_country = e.target.country.value;
+
+    const importData = {
+      product_id: id,
+      product_name,
+      product_image,
+      importer_name,
+      importer_email,
+      supplier_name,
+      supplier_email,
+      import_quantity,
+      total_cost: price * import_quantity,
+      imported_at: new Date().toLocaleTimeString(),
+      import_country,
+    };
+    console.log(importData);
+
+    axiosSecure
+      .post(`/imports`, importData)
+      .then((response) => {
+        console.log("after secure call", response);
+        e.target.reset();
+        setImportQuantity("");
+        setAvailable(available - Number(import_quantity));
+        modalRef.current.close();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="max-w-5xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">
@@ -98,8 +112,7 @@ const Details = () => {
               <span className="font-medium">Origin:</span> {origin_country}
             </p>
             <p>
-              <span className="font-medium">Available:</span>{" "}
-              {available_quantity}
+              <span className="font-medium">Available:</span> {available}
             </p>
             <p>
               <span className="font-medium">Rating:</span> ⭐ {rating}
@@ -206,8 +219,7 @@ const Details = () => {
                 <button
                   className="btn btn-primary mt-4"
                   disabled={
-                    Number(available_quantity) < importQuantity ||
-                    importQuantity < 1
+                    Number(available) < importQuantity || importQuantity < 1
                       ? true
                       : false
                   }
