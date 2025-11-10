@@ -4,26 +4,42 @@ import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 
 const Register = () => {
-  const { googleSignIn } = useAuth();
-  const navigate = useNavigate()
+  const { googleSignIn, createUser, updateUser } = useAuth();
+  const navigate = useNavigate();
+
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
-    const userData = {
-      name: form.name.value,
-      photoURL: form.photoURL.value,
-      email: form.email.value,
-      password: form.password.value,
-    };
-    console.log("User Data:", userData);
+    const displayName = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (!passwordRegex.test(password)) {
+      alert("Password is not valid.");
+      return;
+    }
+
+    createUser(email, password)
+      .then(() => {
+        console.log("successfully user created");
+
+        updateUser({ displayName, photoURL })
+          .then(() => console.log("successfully updated user"))
+          .catch((err) => console.log(err.message));
+
+        navigate("/");
+      })
+      .catch((err) => console.log(err.message));
   };
 
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
         console.log(result);
-        navigate("/")
+        navigate("/");
       })
       .catch((err) => console.log(err.message));
   };
@@ -35,7 +51,9 @@ const Register = () => {
         <h2 className="text-xl font-semibold text-center mb-4 text-primary">
           Register Now
         </h2>
+
         <form onSubmit={handleRegister} className="space-y-4">
+          {/* name */}
           <div>
             <label className="label">
               <span className="label-text">Full Name</span>
@@ -48,6 +66,8 @@ const Register = () => {
               required
             />
           </div>
+
+          {/* img url */}
           <div>
             <label className="label">
               <span className="label-text">Image URL</span>
@@ -59,6 +79,8 @@ const Register = () => {
               className="input input-bordered w-full"
             />
           </div>
+
+          {/* email */}
           <div>
             <label className="label">
               <span className="label-text">Email</span>
@@ -71,6 +93,8 @@ const Register = () => {
               required
             />
           </div>
+
+          {/* password */}
           <div>
             <label className="label">
               <span className="label-text">Password</span>
@@ -80,18 +104,24 @@ const Register = () => {
               name="password"
               placeholder="Password"
               className="input input-bordered w-full"
+              minLength={6}
               required
             />
           </div>
+
           <button type="submit" className="btn btn-primary w-full">
             Register
           </button>
         </form>
+
         <div className="divider">OR</div>
+
+        {/* google signin button */}
         <button className="btn btn-outline w-full" onClick={handleGoogleLogin}>
           <FcGoogle className="text-xl" />
           Continue with Google
         </button>
+
         <p className="text-sm text-center mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-500 hover:underline">

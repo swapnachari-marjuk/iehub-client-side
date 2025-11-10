@@ -1,21 +1,30 @@
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { googleSignIn } = useAuth();
+  const { googleSignIn, userSignIn } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
+    userSignIn(email, password)
+      .then(() => {
+        navigate(location.state || "/");
+      })
+      .catch((err) => console.log(err));
+      // {email: 'marjukmujaddedi@gmail.com', password: 'test-Marjuk1'}
   };
 
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then((result) => console.log(result))
+      .then(() => {
+        navigate(location.state);
+      })
       .catch((err) => console.log(err.message));
   };
 
@@ -52,6 +61,7 @@ const Login = () => {
               name="password"
               placeholder="Enter your password"
               className="input input-bordered w-full"
+              minLength={6}
               required
             />
             <div className="text-right mt-1">
@@ -65,7 +75,7 @@ const Login = () => {
           </div>
 
           <button type="submit" className="btn btn-primary w-full">
-            Register
+            Login
           </button>
         </form>
 

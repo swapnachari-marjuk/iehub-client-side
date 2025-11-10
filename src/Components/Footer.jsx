@@ -57,9 +57,9 @@ const Footer = () => {
           </div>
         </nav>
         <aside>
+          <p>Developed By Ahmad M.</p>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by ACME
-            Industries Ltd
+            Copyright © {new Date().getFullYear()} - All right reserved by Developer.
           </p>
         </aside>
       </footer>

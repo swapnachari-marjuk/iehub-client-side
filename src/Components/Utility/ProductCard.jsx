@@ -14,6 +14,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="card bg-white shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
+      {/* product image */}
       <figure className="h-60 bg-gray-50 flex items-center justify-center">
         <img
           className="h-full object-contain"

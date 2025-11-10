@@ -142,8 +142,10 @@ const Details = () => {
             <h3 className="text-xl font-bold">
               Give your information to import this product
             </h3>
+
             <form onSubmit={handleImportData} className="card-body">
               <fieldset className="fieldset">
+                {/* name */}
                 <div>
                   <label className="label">Importer Name</label>
                   <input
@@ -154,6 +156,7 @@ const Details = () => {
                     readOnly
                   />
                 </div>
+                {/* email field */}
                 <div>
                   <label className="label">Importer Email</label>
                   <input
@@ -164,6 +167,7 @@ const Details = () => {
                     readOnly
                   />
                 </div>
+                {/* country field */}
                 <div>
                   <label className="label">Import Country</label>
                   <input
@@ -173,6 +177,7 @@ const Details = () => {
                     placeholder="Import Country"
                   />
                 </div>
+                {/* quantity field */}
                 <div>
                   <label className="label">How much</label>
                   <input
@@ -184,6 +189,7 @@ const Details = () => {
                     onChange={handleQuantity}
                   />
                 </div>
+
                 <button
                   className="btn btn-primary mt-4"
                   disabled={
@@ -197,6 +203,7 @@ const Details = () => {
                 </button>
               </fieldset>
             </form>
+
             <form method="dialog">
               <button className="btn border-0 w-full">Close</button>
             </form>

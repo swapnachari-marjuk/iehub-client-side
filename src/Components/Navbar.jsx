@@ -73,7 +73,7 @@ const Navbar = () => {
                 className="btn lg:btn btn-sm btn-primary"
                 onClick={() =>
                   userSignOut()
-                    .then((result) => console.log(result))
+                    .then(() => "")
                     .catch((err) => console.log(err))
                 }
               >
