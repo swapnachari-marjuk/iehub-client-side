@@ -38,7 +38,7 @@ const AllProducts = () => {
 
       <form
         onSubmit={handleSearch}
-        className="flex justify-center items-center"
+        className="flex justify-center items-center mt-3"
       >
         <input
           name="search"

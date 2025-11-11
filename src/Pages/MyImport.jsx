@@ -27,7 +27,7 @@ const MyImport = () => {
       <div className="flex justify-center items-center py-10">
         <div className="bg-gray-100 p-5 rounded-2xl text-center text-gray-500">
           <h2 className="font-bold text-2xl">
-            You do not have any imported products.
+            You have not imported any products yet.
           </h2>
           <p className="text-sm">You can import any product you want.</p>
         </div>

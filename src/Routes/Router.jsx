@@ -34,11 +34,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/myExport",
-        element: <MyExport />,
+        element: (
+          <PrivetRout>
+            <MyExport />
+          </PrivetRout>
+        ),
       },
       {
         path: "/addExport",
-        element: <AddExport />,
+        element: (
+          <PrivetRout>
+            <AddExport />
+          </PrivetRout>
+        ),
       },
 
       {
