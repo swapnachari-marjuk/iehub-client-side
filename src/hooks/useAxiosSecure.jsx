@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import { useEffect } from "react";
 
 const secureInstance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "http://localhost:3000",
 });
 const useAxiosSecure = () => {
   const { user } = useAuth();

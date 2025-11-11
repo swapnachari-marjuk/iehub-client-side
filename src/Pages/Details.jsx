@@ -51,7 +51,7 @@ const Details = () => {
 
   const handleImportData = (e) => {
     e.preventDefault();
-    const importer_name = e.target.name.value;
+    // const importer_name = e.target.name.value;
     const importer_email = e.target.email.value;
     const import_quantity = e.target.quantity.value;
     const import_country = e.target.country.value;
@@ -60,8 +60,9 @@ const Details = () => {
       product_id: id,
       product_name,
       product_image,
-      importer_name,
       importer_email,
+      price,
+      rating,
       supplier_name,
       supplier_email,
       import_quantity,
@@ -201,6 +202,7 @@ const Details = () => {
                     className="input w-full"
                     name="country"
                     placeholder="e.g. Bangladesh"
+                    required
                   />
                 </div>
                 {/* quantity field */}
