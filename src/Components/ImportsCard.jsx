@@ -1,11 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import useAxios from "../hooks/useAxios";
 
-const ImportsCard = ({ product }) => {
+const ImportsCard = ({ product, onDelete }) => {
   const axiosInstance = useAxios();
-  const navigate = useNavigate()
-
   const {
     product_image,
     product_name,
@@ -20,9 +18,8 @@ const ImportsCard = ({ product }) => {
     axiosInstance
       .delete(`/imports/${_id}`)
       .then((res) => {
-        navigate("")
+        onDelete(_id);
         console.log(res);
-
       })
       .catch((err) => console.log(err));
   };
