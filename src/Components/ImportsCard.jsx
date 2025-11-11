@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
-import useAxios from "../hooks/useAxios";
+
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ImportsCard = ({ product, onDelete }) => {
-  const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const {
     product_image,
     product_name,
@@ -12,10 +13,11 @@ const ImportsCard = ({ product, onDelete }) => {
     rating,
     import_quantity,
     _id,
+    product_id,
   } = product;
 
   const handleDelete = () => {
-    axiosInstance
+    axiosSecure
       .delete(`/imports/${_id}`)
       .then((res) => {
         onDelete(_id);
@@ -56,7 +58,7 @@ const ImportsCard = ({ product, onDelete }) => {
         {/* actions Button */}
         <div className="space-y-4">
           <Link
-            // to={`/viewDetails/${_id}`}
+            to={`/viewDetails/${product_id}`}
             className="btn btn-primary w-full mt-2 hover:bg-blue-700 transition-colors"
           >
             View Details

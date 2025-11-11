@@ -26,11 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myImport",
-        element: <MyImport />,
-      },
-      {
-        path: "/myExport",
-        element: <MyExport />,
+        element: (
+          <PrivetRout>
+            <MyImport />
+          </PrivetRout>
+        ),
       },
       {
         path: "/myExport",

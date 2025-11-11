@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import ProductCard from "../Components/Utility/ProductCard";
+import useAuth from "../hooks/useAuth";
+import Loading from "../Components/Loading";
 
 const AllProducts = () => {
   const axiosInstance = useAxios();
+  const { loading } = useAuth();
   const [data, setData] = useState([]);
+
   useEffect(() => {
     axiosInstance.get("/products").then((axiosData) => {
       setData(axiosData.data);
     });
   }, [axiosInstance]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <h2 className="text-2xl font-bold text-center mt-5">All Products</h2>
