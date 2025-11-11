@@ -1,6 +1,11 @@
 import React from "react";
+// import useAxios from "../hooks/useAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
 
 const AddExport = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,7 +21,17 @@ const AddExport = () => {
       available_quantity: parseInt(form.quantity.value),
       description: form.description.value || "No description added yet!",
       shipping_cost: parseFloat(form.shipping.value),
+      import_date: new Date().toLocaleString(),
+      supplier_name: user.displayName,
+      supplier_email: user.email,
+      status: "Available",
     };
+
+
+    axiosSecure
+      .post("/products", productData)
+      .then((axiosData) => console.log(axiosData.data))
+      .catch((err) => console.log(err));
 
     console.log(productData);
     // form.reset();
