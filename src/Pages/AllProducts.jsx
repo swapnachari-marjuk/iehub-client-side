@@ -3,30 +3,33 @@ import useAxios from "../hooks/useAxios";
 import ProductCard from "../Components/Utility/ProductCard";
 import useAuth from "../hooks/useAuth";
 import Loading from "../Components/Loading";
+import { useLoaderData } from "react-router";
 
 const AllProducts = () => {
+  const data = useLoaderData();
   const axiosInstance = useAxios();
   const { loading } = useAuth();
-  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    setAllData(data);
+  }, [data]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const searchValue = e.target.search.value;
     if (!searchValue) {
-      setData()
+      setAllData(data);
+      return;
     }
     axiosInstance
       .get(`/search/${searchValue}`)
-      .then((res) => setData(res.data))
+      .then((res) => setAllData(res.data))
       .catch((err) => console.log(err));
     console.log(searchValue);
   };
 
-  useEffect(() => {
-    axiosInstance.get("/products").then((axiosData) => {
-      setData(axiosData.data);
-    });
-  }, [axiosInstance]);
+  console.log(allData);
 
   if (loading) {
     return <Loading />;
@@ -49,7 +52,7 @@ const AllProducts = () => {
       </form>
 
       <div className="grid grid-cols-3 my-10 gap-5">
-        {data.map((product) => (
+        {allData.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>

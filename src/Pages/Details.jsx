@@ -8,14 +8,19 @@ const Details = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { id } = useParams();
-  const [productData, setProductData] = useState([]);
+  console.log(id);
+  const [productData, setProductData] = useState();
   const [importQuantity, setImportQuantity] = useState("");
   const modalRef = useRef();
 
   useEffect(() => {
-    axiosSecure.get(`products/${id}`).then((axiosData) => {
-      setProductData(axiosData.data[0]);
-    });
+    axiosSecure
+      .get(`/products/byId/${id}`)
+      .then((axiosData) => {
+        console.log(axiosData);
+        setProductData(axiosData.data);
+      })
+      .catch((err) => console.log(err));
   }, [axiosSecure, id]);
 
   const {
@@ -34,7 +39,7 @@ const Details = () => {
     shipping_cost,
     status,
     _id,
-  } = productData;
+  } = productData || {};
 
   const handleQuantity = (e) => {
     const value = e.target.value;
@@ -85,6 +90,8 @@ const Details = () => {
         console.log(error);
       });
   };
+
+  console.log(productData);
 
   return (
     <div className="max-w-5xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">
