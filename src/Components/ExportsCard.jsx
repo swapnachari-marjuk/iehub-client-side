@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import { Link } from "react-router";
-import useAxios from "../hooks/useAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ExportsCard = ({ product }) => {
   const modalRef = useRef();
-  const axiosInstance = useAxios();
+
+  const axiosSecure = useAxiosSecure();
 
   const {
     product_image,
@@ -20,8 +21,7 @@ const ExportsCard = ({ product }) => {
     description,
   } = product;
 
-  console.log(_id);
-
+  //
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -32,17 +32,26 @@ const ExportsCard = ({ product }) => {
       price: form.price.value,
       origin: form.origin.value,
       rating: form.rating.value,
-      quantity: form.quantity.value,
+      available_quantity: parseInt(form.quantity.value),
       description: form.description.value,
       image: form.image.value,
     };
 
-    axiosInstance
-      .patch(`/products/toUpdateId/${_id}`, formData)
+    axiosSecure
+      .put(`/products/toUpdateId/${_id}`, formData)
       .then((axiosData) => {
-        console.log(axiosData.data);
+        console.log("updated data", axiosData.data);
         modalRef.current.close();
       })
+      .catch((err) => console.log(err));
+  };
+
+  //
+  const handleDelete = (id) => {
+    console.log(id);
+    axiosSecure
+      .delete(`/products/deleteId/${id}`)
+      .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
 
@@ -65,9 +74,7 @@ const ExportsCard = ({ product }) => {
 
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-          <p className="text-blue-600 font-semibold text-base">
-            ${price}
-          </p>
+          <p className="text-blue-600 font-semibold text-base">${price}</p>
           <p className="text-gray-500 text-sm">
             Only {available_quantity} left
           </p>
@@ -86,7 +93,9 @@ const ExportsCard = ({ product }) => {
         >
           Update
         </button>
-        <button className="btn">Delete</button>
+        <button onClick={() => handleDelete(_id)} className="btn">
+          Delete
+        </button>
       </div>
 
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
@@ -225,7 +234,7 @@ const ExportsCard = ({ product }) => {
 
             {/* Submit Button */}
             <div className="pt-3">
-              <button className="btn btn-primary w-full">Add Product</button>
+              <button className="btn btn-primary w-full">Update Item</button>
             </div>
           </form>
           <button

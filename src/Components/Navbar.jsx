@@ -57,9 +57,11 @@ const Navbar = () => {
             <Logo />
           </Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+
         <div className="navbar-end">
           {loading ? (
             <CircleLoader color="#0707f4" size={30} speedMultiplier={0} />
@@ -67,12 +69,12 @@ const Navbar = () => {
             <div className="flex gap-2 items-center">
               <img
                 title={user.displayName}
-                className=" w-10 rounded-full"
+                className="md:w-10 w-8 rounded-full"
                 src={user.photoURL}
                 alt=""
               />
               <button
-                className="btn lg:btn btn-sm btn-primary"
+                className="btn lg:btn md:btn-sm btn-xs btn-primary"
                 onClick={
                   () =>
                     Swal.fire({

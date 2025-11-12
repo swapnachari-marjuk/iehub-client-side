@@ -36,6 +36,7 @@ const AllProducts = () => {
     <div>
       <title>IEHub | All Products</title>
       <h2 className="text-2xl font-bold text-center mt-5">All Products</h2>
+
       <form
         onSubmit={handleSearch}
         className="flex justify-center items-center mt-3"
@@ -48,7 +49,7 @@ const AllProducts = () => {
         <button className="btn join-item btn-primary">Subscribe</button>
       </form>
 
-      <div className="grid grid-cols-3 my-10 gap-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">
         {allData.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}

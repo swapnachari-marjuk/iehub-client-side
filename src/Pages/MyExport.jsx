@@ -39,7 +39,7 @@ const MyExport = () => {
     <div>
       <title>IEHub || My Export</title>
       <h2 className="text-2xl font-bold text-center pt-5">My Exports</h2>
-      <div className="grid grid-cols-3 my-10 gap-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">
         {exportProducts.map((product) => (
           <ExportsCard key={product._id} product={product}></ExportsCard>
         ))}

@@ -40,7 +40,7 @@ const MyImport = () => {
     <div className="py-5">
       <title>IEHub || My Import</title>
       <h2 className="text-center text-xl font-bold my-3">Your Imports</h2>
-      <div className="grid grid-cols-3 gap-5 ">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 ">
         {imports?.map((importData) => (
           <ImportsCard
             key={importData._id}

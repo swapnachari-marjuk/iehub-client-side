@@ -8,7 +8,6 @@ const Details = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { id } = useParams();
-  console.log(id);
   const [productData, setProductData] = useState();
   const [importQuantity, setImportQuantity] = useState("");
   const modalRef = useRef();
@@ -17,7 +16,6 @@ const Details = () => {
     axiosSecure
       .get(`/products/byId/${id}`)
       .then((axiosData) => {
-        console.log(axiosData);
         setProductData(axiosData.data);
       })
       .catch((err) => console.log(err));
