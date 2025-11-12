@@ -169,7 +169,7 @@ const AddExport = () => {
 
         {/* Submit Button */}
         <div className="pt-3">
-          <button className="btn btn-primary w-full">Add Product</button>
+          <button className="btn btn-primary w-full">Update</button>
         </div>
       </form>
     </div>

@@ -91,7 +91,7 @@ const Details = () => {
       });
   };
 
-  console.log(productData);
+
 
   return (
     <div className="max-w-5xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">

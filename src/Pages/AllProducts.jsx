@@ -26,10 +26,7 @@ const AllProducts = () => {
       .get(`/search/${searchValue}`)
       .then((res) => setAllData(res.data))
       .catch((err) => console.log(err));
-    console.log(searchValue);
   };
-
-  console.log(allData);
 
   if (loading) {
     return <Loading />;

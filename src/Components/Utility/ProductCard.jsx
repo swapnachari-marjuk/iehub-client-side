@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
     rating,
     available_quantity,
     _id,
-  } = product;
+  } = product || {};
 
   return (
     <div className="card bg-white shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
           <p className="text-blue-600 font-semibold text-base">
-            ${price.toFixed(2)}
+            ${price}
           </p>
           <p className="text-gray-500 text-sm">
             Only {available_quantity} left
@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
 
         {/* Rating & Country */}
         <div className="flex justify-between items-center">
-          <p className="text-yellow-500 font-medium">⭐ {rating.toFixed(1)}</p>
+          <p className="text-yellow-500 font-medium">⭐ {rating}</p>
           <p className="text-gray-400 italic text-sm">{origin_country}</p>
         </div>
 

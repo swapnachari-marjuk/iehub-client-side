@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import ProductCard from "../Components/Utility/ProductCard";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loading from "../Components/Loading";
+import ExportsCard from "../Components/ExportsCard";
 
 const MyExport = () => {
   const { user, loading } = useAuth();
@@ -38,7 +39,7 @@ const MyExport = () => {
       <h2 className="text-2xl font-bold text-center pt-5">My Exports</h2>
       <div className="grid grid-cols-3 my-10 gap-5">
         {exportProducts.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
+          <ExportsCard key={product._id} product={product}></ExportsCard>
         ))}
       </div>
     </div>
