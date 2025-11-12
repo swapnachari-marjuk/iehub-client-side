@@ -34,8 +34,8 @@ const AllProducts = () => {
 
   return (
     <div>
+      <title>IEHub | All Products</title>
       <h2 className="text-2xl font-bold text-center mt-5">All Products</h2>
-
       <form
         onSubmit={handleSearch}
         className="flex justify-center items-center mt-3"

@@ -25,6 +25,7 @@ const MyImport = () => {
   if (!imports?.length) {
     return (
       <div className="flex justify-center items-center py-10">
+        <title>IEHub || My Import</title>
         <div className="bg-gray-100 p-5 rounded-2xl text-center text-gray-500">
           <h2 className="font-bold text-2xl">
             You have not imported any products yet.
@@ -37,6 +38,7 @@ const MyImport = () => {
 
   return (
     <div className="py-5">
+      <title>IEHub || My Import</title>
       <h2 className="text-center text-xl font-bold my-3">Your Imports</h2>
       <div className="grid grid-cols-3 gap-5 ">
         {imports?.map((importData) => (

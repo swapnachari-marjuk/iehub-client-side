@@ -1,0 +1,75 @@
+import React from "react";
+import { toast } from "react-toastify";
+
+const Mentorship = () => {
+  return (
+    <section className="py-16 px-6 mt-12 shadow-2xl">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        {/* Text */}
+        <div className="text-center md:text-left">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            New to Import & Export?
+          </h2>
+          <p className="text-lg text-gray-600 mb-6">
+            Start your journey with us — join our{" "}
+            <strong>Free Mentorship Program</strong> and learn how to build a
+            successful international trade business.
+          </p>
+          <p className="text-sm text-gray-500 italic">
+            “Learn. Connect. Grow with Import Export Hub.”
+          </p>
+        </div>
+
+        {/* Form */}
+        <div className="bg-white p-8 rounded-2xl shadow-md w-full">
+          <h3 className="text-xl font-semibold text-gray-700 mb-6 text-center">
+            Register for Free Mentorship
+          </h3>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Full Name
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Email Address
+            </label>
+            <input
+              type="email"
+              placeholder="example@email.com"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              placeholder="Your phone number"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
+
+          <button
+          onClick={()=>toast("Thank you for register.")}
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all"
+          >
+            Join Now
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Mentorship;

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import BannerSwiper from "../Components/BannerSwiper";
 import ProductCard from "../Components/Utility/ProductCard";
+import Sponsors from "../Components/Sponsors";
+import Mentorship from "../Components/Mentorship";
 
 const Home = () => {
   const axiosInstance = useAxios();
@@ -15,6 +17,7 @@ const Home = () => {
 
   return (
     <div>
+      <title>IEHub | Home</title>
       <BannerSwiper />
       <div>
         <h2 className="text-2xl font-bold text-center mt-5">Recent Products</h2>
@@ -25,6 +28,10 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <div>
+        <Sponsors />
+      </div>
+      <Mentorship></Mentorship>
     </div>
   );
 };

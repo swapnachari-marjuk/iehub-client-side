@@ -39,6 +39,7 @@ const AddExport = () => {
 
   return (
     <div className="max-w-3xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">
+      <title>IEHub | Add Export</title>
       <h2 className="text-2xl font-semibold text-center mb-6">
         Add a New Product
       </h2>

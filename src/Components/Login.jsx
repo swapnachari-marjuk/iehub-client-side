@@ -31,6 +31,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[80vh] my-5">
+       <title>IEHub || Login</title>
       <div className="card w-full max-w-sm shadow-xl bg-base-100 p-6">
         <h3 className="font-bold text-center">
           Welcome Back to IE<span className="text-primary">Hub</span>

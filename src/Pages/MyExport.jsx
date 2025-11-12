@@ -24,6 +24,7 @@ const MyExport = () => {
   if (!exportProducts?.length) {
     return (
       <div className="flex justify-center items-center py-10">
+        <title>IEHub || My Export</title>
         <div className="bg-gray-100 p-5 rounded-2xl text-center text-gray-500">
           <h2 className="font-bold text-2xl">
             You have not exported any products yet.
@@ -36,6 +37,7 @@ const MyExport = () => {
 
   return (
     <div>
+      <title>IEHub || My Export</title>
       <h2 className="text-2xl font-bold text-center pt-5">My Exports</h2>
       <div className="grid grid-cols-3 my-10 gap-5">
         {exportProducts.map((product) => (

@@ -91,10 +91,9 @@ const Details = () => {
       });
   };
 
-
-
   return (
     <div className="max-w-5xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">
+      <title>IEHub || Details</title>
       {/* Product Image & Info Section */}
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-lg">

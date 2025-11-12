@@ -46,6 +46,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-10">
+       <title>IEHub || Register</title>
       <div className="card w-full max-w-md shadow-xl bg-white p-6">
         <h3 className="font-bold text-center">Interested to Join with us?</h3>
         <h2 className="text-xl font-semibold text-center mb-4 text-primary">
