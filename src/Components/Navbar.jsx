@@ -25,10 +25,10 @@ const Navbar = () => {
         <NavLink to={"/allProducts"}>All Products</NavLink>
       </li>
       <li>
-        <NavLink to={"/myExport"}>My Export</NavLink>
+        <NavLink to={"/myImport"}>My Import</NavLink>
       </li>
       <li>
-        <NavLink to={"/myImport"}>My Import</NavLink>
+        <NavLink to={"/myExport"}>My Export</NavLink>
       </li>
       <li>
         <NavLink to={"/addExport"}>Add Export</NavLink>
