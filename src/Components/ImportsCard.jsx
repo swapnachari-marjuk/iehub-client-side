@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const ImportsCard = ({ product, onDelete }) => {
   const axiosSecure = useAxiosSecure();
@@ -20,8 +21,8 @@ const ImportsCard = ({ product, onDelete }) => {
     axiosSecure
       .delete(`/imports/${_id}`)
       .then(() => {
+        toast.warning("Product is deleted!")
         onDelete(_id);
-        // console.log(res);
       })
       .catch((err) => console.log(err));
   };

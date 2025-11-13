@@ -25,7 +25,7 @@ const Register = () => {
 
     createUser(email, password)
       .then(() => {
-         toast.success("Your account has been created successfully.")
+        toast.success("Your account has been created successfully.");
 
         updateUser({ displayName, photoURL })
           .then(() => console.log("successfully updated user"))
@@ -46,7 +46,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-700 py-10">
-       <title>IEHub || Register</title>
+      <title>IEHub || Register</title>
       <div className="card w-full max-w-md shadow-xl bg-white dark:bg-gray-400 p-6">
         <h3 className="font-bold text-center">Interested to Join with us?</h3>
         <h2 className="text-xl font-semibold text-center mb-4 text-primary">

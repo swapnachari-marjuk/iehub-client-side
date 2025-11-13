@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loading from "../Components/Loading";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const axiosSecure = useAxiosSecure();
@@ -85,6 +86,7 @@ const Details = () => {
         e.target.reset();
         setImportQuantity("");
         setAvailable(available - Number(import_quantity));
+        toast.success("Item imported successfully.")
         modalRef.current.close();
       })
       .catch((error) => {

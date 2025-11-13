@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const ExportsCard = ({ product, onDelete }) => {
   const modalRef = useRef();
@@ -58,6 +59,7 @@ const ExportsCard = ({ product, onDelete }) => {
         setCountry(formData.origin);
         setPRating(formData.rating);
         setQuantity(formData.available_quantity);
+        toast.success("Product updated successfully.")
         modalRef.current.close();
       })
       .catch((err) => console.log(err));
@@ -69,6 +71,7 @@ const ExportsCard = ({ product, onDelete }) => {
       .delete(`/products/deleteId/${id}`)
       .then(() => {
         onDelete(id);
+        toast.warning("Deleted this item.")
         // console.log(result);
       })
       .catch((err) => console.log(err));

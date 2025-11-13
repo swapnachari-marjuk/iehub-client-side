@@ -2,6 +2,7 @@ import React from "react";
 // import useAxios from "../hooks/useAxios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const AddExport = () => {
   const { user } = useAuth();
@@ -30,6 +31,7 @@ const AddExport = () => {
     axiosSecure
       .post("/products", productData)
       .then(() => {
+        toast.success("Product Exported successfully.")
         form.reset();
       })
       .catch((err) => console.log(err));
@@ -168,7 +170,7 @@ const AddExport = () => {
 
         {/* Submit Button */}
         <div className="pt-3">
-          <button className="btn btn-primary w-full">Update</button>
+          <button className="btn btn-primary w-full">Add Product</button>
         </div>
       </form>
     </div>
