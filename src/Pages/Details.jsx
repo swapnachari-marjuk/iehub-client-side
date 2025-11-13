@@ -86,7 +86,7 @@ const Details = () => {
         e.target.reset();
         setImportQuantity("");
         setAvailable(available - Number(import_quantity));
-        toast.success("Item imported successfully.")
+        toast.success("Item imported successfully.");
         modalRef.current.close();
       })
       .catch((error) => {
@@ -99,7 +99,7 @@ const Details = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">
+    <div className="max-w-5xl mx-auto my-10 bg-white dark:bg-gray-600 shadow-md rounded-xl p-6">
       <title>IEHub || Details</title>
       {/* Product Image & Info Section */}
       <div className="flex flex-col lg:flex-row gap-8">
@@ -112,16 +112,18 @@ const Details = () => {
         </div>
 
         <div className="flex-1 space-y-3">
-          <h1 className="text-2xl font-semibold text-gray-800">
+          <h1 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
             {product_name}
           </h1>
-          <p className="text-sm text-gray-500 italic">
+          <p className="text-sm text-gray-500 dark:text-gray-200 italic">
             {category} • {brand}
           </p>
 
-          <p className="text-3xl font-bold text-blue-600">${price}</p>
+          <p className="text-3xl font-bold text-blue-600 dark:text-blue-300">
+            ${price}
+          </p>
 
-          <div className="flex flex-wrap gap-4 text-gray-700 mt-4">
+          <div className="flex flex-wrap gap-4 text-gray-700 dark:text-gray-200 mt-4">
             <p>
               <span className="font-medium">Origin:</span> {origin_country}
             </p>
@@ -136,15 +138,21 @@ const Details = () => {
             </p>
           </div>
 
-          <p className="text-gray-600 mt-3 leading-relaxed">{description}</p>
+          <p className="text-gray-600 dark:text-gray-200 mt-3 leading-relaxed">
+            {description}
+          </p>
 
-          <div className="border-t border-gray-100 pt-3 text-sm text-gray-500">
+          <div className="border-t border-gray-100 pt-3 text-sm text-gray-500 dark:text-gray-300">
             <p>
-              <span className="font-medium text-gray-700">Import Date:</span>{" "}
+              <span className="font-medium text-gray-700 dark:text-gray-300">
+                Import Date:
+              </span>{" "}
               {import_date}
             </p>
             <p>
-              <span className="font-medium text-gray-700">Shipping Cost:</span>{" "}
+              <span className="font-medium text-gray-700 dark:text-gray-300">
+                Shipping Cost:
+              </span>{" "}
               ${shipping_cost}
             </p>
           </div>
@@ -152,7 +160,7 @@ const Details = () => {
       </div>
 
       {/* Supplier Info */}
-      <div className="mt-8 bg-gray-50 p-4 rounded-lg">
+      <div className="mt-8 bg-gray-50 dark:bg-gray-400 p-4 rounded-lg">
         <h2 className="text-lg font-semibold text-gray-800 mb-2">
           Supplier Information
         </h2>
