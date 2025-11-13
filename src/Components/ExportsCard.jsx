@@ -50,8 +50,8 @@ const ExportsCard = ({ product, onDelete }) => {
 
     axiosSecure
       .put(`/products/toUpdateId/${_id}`, formData)
-      .then((axiosData) => {
-        console.log("updated data", axiosData.data);
+      .then(() => {
+        // console.log("updated data", axiosData.data);
         setName(formData.name);
         setImage(formData.image);
         setPPrice(formData.price);
@@ -67,9 +67,9 @@ const ExportsCard = ({ product, onDelete }) => {
   const handleDelete = (id) => {
     axiosSecure
       .delete(`/products/deleteId/${id}`)
-      .then((result) => {
+      .then(() => {
         onDelete(id);
-        console.log(result);
+        // console.log(result);
       })
       .catch((err) => console.log(err));
   };

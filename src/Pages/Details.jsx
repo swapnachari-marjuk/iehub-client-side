@@ -3,9 +3,11 @@ import { useParams } from "react-router";
 // import useAxios from "../hooks/useAxios";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loading from "../Components/Loading";
 
 const Details = () => {
   const axiosSecure = useAxiosSecure();
+  const [loading, setLoading] = useState(true);
   const { user } = useAuth();
   const { id } = useParams();
   const [productData, setProductData] = useState();
@@ -16,6 +18,7 @@ const Details = () => {
     axiosSecure
       .get(`/products/byId/${id}`)
       .then((axiosData) => {
+        setLoading(false);
         setProductData(axiosData.data);
       })
       .catch((err) => console.log(err));
@@ -73,12 +76,12 @@ const Details = () => {
       imported_at: new Date().toLocaleTimeString(),
       import_country,
     };
-    console.log(importData);
+    // console.log(importData);
 
     axiosSecure
       .post(`/imports`, importData)
-      .then((response) => {
-        console.log("after secure call", response);
+      .then(() => {
+        // console.log("after secure call", response);
         e.target.reset();
         setImportQuantity("");
         setAvailable(available - Number(import_quantity));
@@ -88,6 +91,10 @@ const Details = () => {
         console.log(error);
       });
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="max-w-5xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">

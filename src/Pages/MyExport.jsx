@@ -6,14 +6,18 @@ import Loading from "../Components/Loading";
 import ExportsCard from "../Components/ExportsCard";
 
 const MyExport = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [exportProducts, setExportProducts] = useState([]);
+  const [pageLoading, setPageLoading] = useState(true);
 
   useEffect(() => {
     axiosSecure
       .get(`/products/${user?.email}`)
-      .then((res) => setExportProducts(res.data))
+      .then((res) => {
+        setExportProducts(res.data);
+        setPageLoading(false);
+      })
       .catch((err) => console.log(err));
   }, [axiosSecure, user]);
 
@@ -25,7 +29,7 @@ const MyExport = () => {
     setExportProducts(updateProducts);
   };
 
-  if (loading) {
+  if (pageLoading) {
     return <Loading />;
   }
 

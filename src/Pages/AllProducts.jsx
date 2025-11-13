@@ -10,25 +10,33 @@ const AllProducts = () => {
   const axiosInstance = useAxios();
   const { loading } = useAuth();
   const [allData, setAllData] = useState([]);
+  const [pageLoading, setPageLoading] = useState(true);
 
   useEffect(() => {
+    setPageLoading(false);
     setAllData(data);
   }, [data]);
 
   const handleSearch = (e) => {
+    // setPageLoading(true);
     e.preventDefault();
     const searchValue = e.target.search.value;
     if (!searchValue) {
+      setPageLoading(false);
       setAllData(data);
+
       return;
     }
     axiosInstance
       .get(`/search/${searchValue}`)
-      .then((res) => setAllData(res.data))
+      .then((res) => {
+        setPageLoading(false);
+        setAllData(res.data);
+      })
       .catch((err) => console.log(err));
   };
 
-  if (loading) {
+  if (loading || pageLoading) {
     return <Loading />;
   }
 

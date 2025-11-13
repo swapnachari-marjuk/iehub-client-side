@@ -9,6 +9,7 @@ import AddExport from "../Pages/AddExport";
 import AllProducts from "../Pages/AllProducts";
 import Details from "../Pages/Details";
 import PrivetRout from "./PrivetRout";
+import Loading from "../Components/Loading";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,9 @@ const router = createBrowserRouter([
         element: <AllProducts />,
         loader: () =>
           fetch(`https://import-export-hub-server-api.vercel.app/products`),
+        hydrateFallbackElement: <Loading />,
       },
+
       {
         path: "/myImport",
         element: (

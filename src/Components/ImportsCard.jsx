@@ -19,9 +19,9 @@ const ImportsCard = ({ product, onDelete }) => {
   const handleDelete = () => {
     axiosSecure
       .delete(`/imports/${_id}`)
-      .then((res) => {
+      .then(() => {
         onDelete(_id);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   };

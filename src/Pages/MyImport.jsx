@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import ImportsCard from "../Components/ImportsCard";
+import Loading from "../Components/Loading";
 
 const MyImport = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [imports, setImports] = useState();
+  const [pageLoading, setPageLoading] = useState(true);
 
   const onDelete = (id) => {
     const remainingData = imports.filter((importData) => importData._id !== id);
@@ -18,9 +20,14 @@ const MyImport = () => {
       .get(`/imports?email=${user?.email}`)
       .then((res) => {
         setImports(res.data);
+        setPageLoading(false);
       })
       .catch((err) => console.log(err));
   }, [axiosSecure, user]);
+
+  if (pageLoading) {
+    return <Loading />;
+  }
 
   if (!imports?.length) {
     return (

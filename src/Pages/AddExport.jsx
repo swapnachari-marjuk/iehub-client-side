@@ -29,14 +29,10 @@ const AddExport = () => {
 
     axiosSecure
       .post("/products", productData)
-      .then((axiosData) => {
-        console.log(axiosData.data);
-        e.target.reset();
+      .then(() => {
+        form.reset();
       })
       .catch((err) => console.log(err));
-
-    console.log(productData);
-    // form.reset();
   };
 
   return (
