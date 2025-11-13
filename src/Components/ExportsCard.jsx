@@ -75,7 +75,7 @@ const ExportsCard = ({ product, onDelete }) => {
   };
 
   return (
-    <div className="card bg-white shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
+    <div className="card bg-white dark:bg-gray-600 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
       {/* product image */}
       <figure className="h-60 bg-gray-50 flex items-center justify-center">
         <img className="h-full object-contain" src={image} alt={name} />
@@ -83,14 +83,14 @@ const ExportsCard = ({ product, onDelete }) => {
 
       <div className="flex flex-col p-5 space-y-3">
         {/* Product Name */}
-        <h2 className="card-title text-lg font-semibold text-gray-800">
+        <h2 className="card-title text-lg font-semibold text-gray-800 dark:text-white">
           {name}
         </h2>
 
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-          <p className="text-blue-600 font-semibold text-base">${pPrice}</p>
-          <p className="text-gray-500 text-sm">Only {quantity} left</p>
+          <p className="text-blue-600 dark:text-blue-300 font-semibold text-base">${pPrice}</p>
+          <p className="text-gray-500 dark:text-white text-sm">Only {quantity} left</p>
         </div>
 
         {/* Rating & Country */}
@@ -102,7 +102,7 @@ const ExportsCard = ({ product, onDelete }) => {
         {/* action Buttons */}
         <button
           onClick={() => modalRef.current.showModal()}
-          className="btn btn-primary w-full mt-2 hover:bg-blue-700 transition-colors"
+          className="btn btn-primary w-full mt-2 transition-colors"
         >
           Update
         </button>

@@ -46,7 +46,7 @@ const AllProducts = () => {
           className="input join-item"
           placeholder="🔎Search"
         />
-        <button className="btn join-item btn-primary">Subscribe</button>
+        <button className="btn join-item btn-primary">Search</button>
       </form>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">

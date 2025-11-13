@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
@@ -8,6 +8,17 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { loading, user, userSignOut } = useAuth();
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.documentElement;
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
   const links = (
     <>
       <li>
@@ -63,6 +74,13 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle mr-2"
+          />
+
           {loading ? (
             <CircleLoader color="#0707f4" size={30} speedMultiplier={0} />
           ) : user ? (

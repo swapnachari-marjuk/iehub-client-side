@@ -7,27 +7,27 @@ const Mentorship = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Text */}
         <div className="text-center md:text-left">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
             New to Import & Export?
           </h2>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-gray-600 dark:text-white mb-6">
             Start your journey with us — join our{" "}
             <strong>Free Mentorship Program</strong> and learn how to build a
             successful international trade business.
           </p>
-          <p className="text-sm text-gray-500 italic">
+          <p className="text-sm text-gray-500 dark:text-white italic">
             “Learn. Connect. Grow with Import Export Hub.”
           </p>
         </div>
 
         {/* Form */}
-        <div className="bg-white p-8 rounded-2xl shadow-md w-full">
-          <h3 className="text-xl font-semibold text-gray-700 mb-6 text-center">
+        <div className="bg-white dark:bg-gray-600 p-8 rounded-2xl shadow-md w-full">
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-white mb-6 text-center">
             Register for Free Mentorship
           </h3>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
+            <label className="block text-sm font-medium text-gray-600 dark:text-white mb-1">
               Full Name
             </label>
             <input
@@ -38,7 +38,7 @@ const Mentorship = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
+            <label className="block text-sm font-medium text-gray-600 dark:text-white mb-1">
               Email Address
             </label>
             <input
@@ -49,7 +49,7 @@ const Mentorship = () => {
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
+            <label className="block text-sm font-medium text-gray-600 dark:text-white mb-1">
               Phone Number
             </label>
             <input

@@ -40,7 +40,7 @@ const AddExport = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto my-10 bg-white shadow-md rounded-xl p-6">
+    <div className="max-w-3xl mx-auto my-10 bg-white dark:bg-gray-700 shadow-md rounded-xl p-6">
       <title>IEHub | Add Export</title>
       <h2 className="text-2xl font-semibold text-center mb-6">
         Add a New Product
@@ -54,7 +54,7 @@ const AddExport = () => {
             type="text"
             name="name"
             placeholder="e.g. Handcrafted Cotton Kurta"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -66,7 +66,7 @@ const AddExport = () => {
             type="text"
             name="category"
             placeholder="e.g. Clothing, Accessories, Decor"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -78,7 +78,7 @@ const AddExport = () => {
             type="text"
             name="brand"
             placeholder="e.g. LoomArt"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -91,7 +91,7 @@ const AddExport = () => {
             step="0.01"
             name="price"
             placeholder="e.g. 28.50"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -103,7 +103,7 @@ const AddExport = () => {
             type="text"
             name="origin"
             placeholder="e.g. India"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -118,7 +118,7 @@ const AddExport = () => {
             max="5"
             name="rating"
             placeholder="e.g. 4.6"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -130,7 +130,7 @@ const AddExport = () => {
             type="number"
             name="quantity"
             placeholder="e.g. 200"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -143,7 +143,7 @@ const AddExport = () => {
             step="0.01"
             name="shipping"
             placeholder="e.g. 12.50"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>
@@ -154,7 +154,7 @@ const AddExport = () => {
           <textarea
             name="description"
             placeholder="Write a short description about your product..."
-            className="textarea textarea-bordered w-full h-24"
+            className="textarea textarea-bordered w-full h-24 dark:bg-gray-500"
           ></textarea>
         </div>
 
@@ -165,7 +165,7 @@ const AddExport = () => {
             type="url"
             name="image"
             placeholder="https://example.com/image.jpg"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full dark:bg-gray-500"
             required
           />
         </div>

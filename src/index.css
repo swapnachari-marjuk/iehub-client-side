@@ -1,16 +1,17 @@
 @import "tailwindcss";
 @plugin "daisyui";
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true;
-  --color-primary: #2563eb;
-  --color-secondary: #fff;
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
 }
 
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+
 li > a {
-  @apply hover:underline decoration-blue-600 hover:text-blue-600 cursor-pointer;
+  @apply hover:underline decoration-primary hover:text-primary cursor-pointer;
 }
 
 .active{
-  @apply underline decoration-blue-600 text-blue-600 
+  @apply underline decoration-primary text-primary
 }

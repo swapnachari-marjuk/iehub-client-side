@@ -27,7 +27,7 @@ const ImportsCard = ({ product, onDelete }) => {
   };
 
   return (
-    <div className="card bg-white shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
+    <div className="card bg-white dark:bg-gray-600 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
       {/* product image */}
       <figure className="h-60 bg-gray-50 flex items-center justify-center">
         <img
@@ -39,14 +39,14 @@ const ImportsCard = ({ product, onDelete }) => {
 
       <div className="flex flex-col p-5 space-y-3">
         {/* Product Name */}
-        <h2 className="card-title text-lg font-semibold text-gray-800">
+        <h2 className="card-title text-lg font-semibold text-gray-800 dark:text-white">
           {product_name}
         </h2>
 
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-          <p className="text-blue-600 font-semibold text-base">${price}</p>
-          <p className="text-gray-500 text-sm">Quantity {import_quantity}</p>
+          <p className="text-blue-600 dark:text-blue-400 font-semibold text-base">${price}</p>
+          <p className="text-gray-500 dark:text-gray-300 text-sm">Quantity {import_quantity}</p>
         </div>
 
         {/* Rating & Country */}
@@ -59,7 +59,7 @@ const ImportsCard = ({ product, onDelete }) => {
         <div className="space-y-4">
           <Link
             to={`/viewDetails/${product_id}`}
-            className="btn btn-primary w-full mt-2 hover:bg-blue-700 transition-colors"
+            className="btn btn-primary w-full mt-2 transition-colors"
           >
             View Details
           </Link>
