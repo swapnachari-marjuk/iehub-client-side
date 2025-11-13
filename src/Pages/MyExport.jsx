@@ -17,6 +17,14 @@ const MyExport = () => {
       .catch((err) => console.log(err));
   }, [axiosSecure, user]);
 
+  const onDelete = (id) => {
+    console.log(id);
+    const updateProducts = exportProducts.filter(
+      (product) => product._id !== id
+    );
+    setExportProducts(updateProducts);
+  };
+
   if (loading) {
     return <Loading />;
   }
@@ -41,7 +49,11 @@ const MyExport = () => {
       <h2 className="text-2xl font-bold text-center pt-5">My Exports</h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">
         {exportProducts.map((product) => (
-          <ExportsCard key={product._id} product={product}></ExportsCard>
+          <ExportsCard
+            key={product._id}
+            onDelete={onDelete}
+            product={product}
+          ></ExportsCard>
         ))}
       </div>
     </div>

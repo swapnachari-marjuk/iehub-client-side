@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
-const ExportsCard = ({ product }) => {
+const ExportsCard = ({ product, onDelete }) => {
   const modalRef = useRef();
 
   const axiosSecure = useAxiosSecure();
@@ -14,12 +14,23 @@ const ExportsCard = ({ product }) => {
     origin_country,
     rating,
     available_quantity,
-    _id,
     category,
     brand,
     shipping_cost,
     description,
+    _id,
   } = product;
+
+  const [name, setName] = useState(product_name);
+  const [image, setImage] = useState(product_image);
+  const [pPrice, setPPrice] = useState(price);
+  const [Country, setCountry] = useState(origin_country);
+  const [pRating, setPRating] = useState(rating);
+  const [quantity, setQuantity] = useState(available_quantity);
+  // const [pCategory, setPCategory] = useState(category);
+  // const [pBrand, setPBrand] = useState(brand);
+  // const [shipping, setShipping] = useState(shipping_cost);
+  // const [pDesc, setPDesc] = useState(description);
 
   //
   const handleUpdate = (e) => {
@@ -41,6 +52,12 @@ const ExportsCard = ({ product }) => {
       .put(`/products/toUpdateId/${_id}`, formData)
       .then((axiosData) => {
         console.log("updated data", axiosData.data);
+        setName(formData.name);
+        setImage(formData.image);
+        setPPrice(formData.price);
+        setCountry(formData.origin);
+        setPRating(formData.rating);
+        setQuantity(formData.available_quantity);
         modalRef.current.close();
       })
       .catch((err) => console.log(err));
@@ -48,10 +65,12 @@ const ExportsCard = ({ product }) => {
 
   //
   const handleDelete = (id) => {
-    console.log(id);
     axiosSecure
       .delete(`/products/deleteId/${id}`)
-      .then((result) => console.log(result))
+      .then((result) => {
+        onDelete(id);
+        console.log(result);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -59,31 +78,25 @@ const ExportsCard = ({ product }) => {
     <div className="card bg-white shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
       {/* product image */}
       <figure className="h-60 bg-gray-50 flex items-center justify-center">
-        <img
-          className="h-full object-contain"
-          src={product_image}
-          alt={product_name}
-        />
+        <img className="h-full object-contain" src={image} alt={name} />
       </figure>
 
       <div className="flex flex-col p-5 space-y-3">
         {/* Product Name */}
         <h2 className="card-title text-lg font-semibold text-gray-800">
-          {product_name}
+          {name}
         </h2>
 
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-          <p className="text-blue-600 font-semibold text-base">${price}</p>
-          <p className="text-gray-500 text-sm">
-            Only {available_quantity} left
-          </p>
+          <p className="text-blue-600 font-semibold text-base">${pPrice}</p>
+          <p className="text-gray-500 text-sm">Only {quantity} left</p>
         </div>
 
         {/* Rating & Country */}
         <div className="flex justify-between items-center">
-          <p className="text-yellow-500 font-medium">⭐ {rating}</p>
-          <p className="text-gray-400 italic text-sm">{origin_country}</p>
+          <p className="text-yellow-500 font-medium">⭐ {pRating}</p>
+          <p className="text-gray-400 italic text-sm">{Country}</p>
         </div>
 
         {/* action Buttons */}
@@ -98,6 +111,7 @@ const ExportsCard = ({ product }) => {
         </button>
       </div>
 
+      {/* update form modal */}
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <form onSubmit={handleUpdate} className="space-y-4">

@@ -23,7 +23,8 @@ const router = createBrowserRouter([
       {
         path: "/allProducts",
         element: <AllProducts />,
-        loader: () => fetch(`http://localhost:3000/products`),
+        loader: () =>
+          fetch(`https://import-export-hub-server-api.vercel.app/products`),
       },
       {
         path: "/myImport",

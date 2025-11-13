@@ -27,10 +27,12 @@ const AddExport = () => {
       status: "Available",
     };
 
-
     axiosSecure
       .post("/products", productData)
-      .then((axiosData) => console.log(axiosData.data))
+      .then((axiosData) => {
+        console.log(axiosData.data);
+        e.target.reset();
+      })
       .catch((err) => console.log(err));
 
     console.log(productData);
