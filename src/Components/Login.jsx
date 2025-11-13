@@ -16,7 +16,7 @@ const Login = () => {
     const password = form.password.value;
     userSignIn(email, password)
       .then(() => {
-        toast.success("You are logged in successfully.")
+        toast.success("You are logged in successfully.");
         navigate(location.state || "/");
       })
       .catch((err) => toast.warning(err.message));
@@ -25,14 +25,14 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleSignIn()
       .then(() => {
-        navigate(location.state);
+        navigate(location.state || "/");
       })
       .catch((err) => toast.warning(err.message));
   };
 
   return (
     <div className="flex justify-center items-center min-h-[80vh] my-5">
-       <title>IEHub || Login</title>
+      <title>IEHub || Login</title>
       <div className="card w-full max-w-sm shadow-xl bg-base-100 dark:bg-gray-400 p-6">
         <h3 className="font-bold text-center">
           Welcome Back to IE<span className="text-primary">Hub</span>
