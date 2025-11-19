@@ -42,7 +42,7 @@ You can see the project in action here:
 
 🔗 [\[Alternative Live Link (Netlify)\]](https://ie-hub-by-ahmad.netlify.app/)
 
-🔗 [\[Backend Repo link \]](https://ie-hub-by-ahmad.netlify.app/)
+🔗 [\[Backend Repo link \]](https://github.com/swapnachari-marjuk/iehub-server-side)
 
 🔗 [\[Backend apis link \]](https://import-export-hub-server-api.vercel.app/)
 
