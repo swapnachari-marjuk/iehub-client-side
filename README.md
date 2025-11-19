@@ -17,23 +17,17 @@ IEHub is a full-stack web application designed for export-import management. It 
 
 ## How to Run Locally
 
-1. Clone the repository (frontend & backend):
+1. Clone the repository:
    ```bash
    git clone <frontend-link> 
-   git clone <backend-link>
-(For the backend repository, please refer to my pinned repositories.)
    
-2. Navigate to the project directory (for both side):
+2. Navigate to the project directory :
    ```bash
    cd IEHub
    
-3. Install dependencies for frontend and backend:
+3. Install dependencies:
     ```bash
    npm install
-    
-4. Start the backend server:
-    ```bash
-   node index.js
     
 5. Start the frontend site:
     ```bash
