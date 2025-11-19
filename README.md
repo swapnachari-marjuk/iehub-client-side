@@ -1,16 +1,40 @@
-# React + Vite
+# IEHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+IEHub is a full-stack web application designed for export-import management. It enables users to seamlessly add, track, and manage their export and import transactions. Users can view their specific export/import data across different routes, providing a structured and personalized experience.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React, React Router
+- **Authentication & Security:** Firebase
+- **Backend & Database:** Express.js, MongoDB, Firebase 
+- **Additional Libraries & Tools:** Swiper.js, React Fast Marquee, React Toastify, SweetAlert
 
-## React Compiler
+## Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- User authentication and personalized data views
+- Interactive and responsive UI for managing export/import data
+- Notifications and alerts for smooth user experience
 
-## Expanding the ESLint configuration
+## How to Run Locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository (frontend & backend):
+   ```bash
+   git clone <frontend-link> 
+   git clone <backend-link> 
+   
+2. Navigate to the project directory (for both side):
+   ```bash
+   cd IEHub
+   
+3. Install dependencies for frontend and backend:
+    ```bash
+   npm install
+    
+4. Start the backend server:
+    ```bash
+   node index.js
+    
+5. Start the frontend site:
+    ```bash
+   npm run dev
+
