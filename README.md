@@ -38,3 +38,12 @@ IEHub is a full-stack web application designed for export-import management. It 
     ```bash
    npm run dev
 
+
+## 👀 Check It Out
+
+You can see the project in action here:  
+
+🔗 [\[Firebase Live Link\]](https://import-export-hub.web.app/)
+
+🔗 [\[Alternative Live Link (Netlify)\]](https://ie-hub-by-ahmad.netlify.app/)
+
