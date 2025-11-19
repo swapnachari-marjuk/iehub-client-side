@@ -20,7 +20,8 @@ IEHub is a full-stack web application designed for export-import management. It 
 1. Clone the repository (frontend & backend):
    ```bash
    git clone <frontend-link> 
-   git clone <backend-link> 
+   git clone <backend-link>
+(For the backend repository, please refer to my pinned repositories.)
    
 2. Navigate to the project directory (for both side):
    ```bash
