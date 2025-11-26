@@ -6,7 +6,7 @@ IEHub is a full-stack web application designed for export-import management. It 
 
 - **Frontend:** React, React Router
 - **Authentication & Security:** Firebase
-- **Backend & Database:** Express.js, MongoDB, Firebase 
+- **Backend & Database:** Express.js, MongoDB, Firebase
 - **Additional Libraries & Tools:** Swiper.js, React Fast Marquee, React Toastify, SweetAlert
 
 ## Key Features
@@ -19,24 +19,27 @@ IEHub is a full-stack web application designed for export-import management. It 
 
 1. Clone the repository:
    ```bash
-   git clone <frontend-link> 
-   
+   git clone <frontend-link>
+
+   ```
 2. Navigate to the project directory :
    ```bash
    cd IEHub
-   
-3. Install dependencies:
-    ```bash
-   npm install
-    
-5. Start the frontend site:
-    ```bash
-   npm run dev
 
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+
+   ```
+4. Start the frontend site:
+   ```bash
+   npm run dev
+   ```
 
 ## 👀 Check It Out
 
-You can see the project in action here:  
+You can see the project in action here:
 
 🔗 [\[Firebase Live Link\]](https://import-export-hub.web.app/)
 
@@ -44,5 +47,4 @@ You can see the project in action here:
 
 🔗 [\[Backend Repo link \]](https://github.com/swapnachari-marjuk/iehub-server-side)
 
-🔗 [\[Backend apis link \]](https://import-export-hub-server-api.vercel.app/)
-
+🔗 [\[Backend apis link \]](https://iehub-api-server.vercel.app/)

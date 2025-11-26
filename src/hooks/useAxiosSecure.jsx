@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import { useEffect } from "react";
 
 const secureInstance = axios.create({
-  baseURL: "https://import-export-hub-server-api.vercel.app/",
+  baseURL: "https://iehub-api-server.vercel.app/",
 });
 const useAxiosSecure = () => {
   const { user } = useAuth();

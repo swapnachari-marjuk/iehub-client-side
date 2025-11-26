@@ -24,8 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/allProducts",
         element: <AllProducts />,
-        loader: () =>
-          fetch(`https://import-export-hub-server-api.vercel.app/products`),
+        loader: () => fetch(`https://iehub-api-server.vercel.app/products`),
         hydrateFallbackElement: <Loading />,
       },
 
