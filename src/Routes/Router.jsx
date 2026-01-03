@@ -11,6 +11,9 @@ import Details from "../Pages/Details";
 import PrivetRout from "./PrivetRout";
 import Loading from "../Components/Loading";
 import DashLayout from "../Layouts/DashLayout";
+import Services from "../Pages/Services";
+import AboutUs from "../Pages/AboutUs";
+import Contact from "../Pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,21 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/services",
+        element: <Services />,
+      },
+
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
+      },
+
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+
+      {
         path: "/viewDetails/:id",
         element: <Details />,
       },
@@ -38,12 +56,14 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+
       {
         path: "/login",
         element: <Login />,
       },
     ],
   },
+
   {
     path: "/dashboard",
     Component: DashLayout,

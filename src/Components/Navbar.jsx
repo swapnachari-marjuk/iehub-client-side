@@ -49,15 +49,15 @@ const Navbar = () => {
       <li>
         <NavLink to={"/allProducts"}>All Products</NavLink>
       </li>
-      {/* <li>
-        <NavLink to={"/myImport"}>My Import</NavLink>
+      <li>
+        <NavLink to={"/services"}>Services</NavLink>
       </li>
       <li>
-        <NavLink to={"/myExport"}>My Export</NavLink>
+        <NavLink to={"/aboutUs"}>About Us</NavLink>
       </li>
       <li>
-        <NavLink to={"/addExport"}>Add Export</NavLink>
-      </li> */}
+        <NavLink to={"/contact"}>Contact</NavLink>
+      </li>
     </>
   );
   return (

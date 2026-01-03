@@ -43,7 +43,7 @@ const AllProducts = () => {
   return (
     <div>
       <title>IEHub | All Products</title>
-      <h2 className="text-2xl font-bold text-center mt-5">All Products</h2>
+      <h2 className="md:text-xl font-bold text-center mt-5">All Products</h2>
 
       <form
         onSubmit={handleSearch}
