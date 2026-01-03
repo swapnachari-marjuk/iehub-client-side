@@ -3,9 +3,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
 // import required modules
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay} from "swiper/modules";
 import BannerFirst from "./BannerFirst";
 import BannerScnd from "./BannerScnd";
 import BannerThrd from "./BannerThrd";
@@ -15,7 +14,7 @@ const BannerSwiper = () => {
     <>
       <Swiper
         loop
-        autoplay={{ delay: 3000, disableOnInteraction: true }}
+        autoplay={{ delay: 3000}}
         modules={[Autoplay]}
         className="mySwiper overflow-x-hidden"
       >

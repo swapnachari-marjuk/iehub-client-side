@@ -19,10 +19,9 @@ const Home = () => {
     <div>
       <title>IEHub | Home</title>
       <BannerSwiper />
-      <div>
-        <h2 className="text-2xl font-bold text-center mt-5">Recent Products</h2>
-
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">
+      <div className="my-16">
+        <h2 className="text-3xl font-bold text-center mb-5">Recent Products</h2>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
           {data.map((product) => (
             <ProductCard key={product._id} product={product}></ProductCard>
           ))}

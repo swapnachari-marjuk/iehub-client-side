@@ -15,6 +15,8 @@ const Details = () => {
   const [importQuantity, setImportQuantity] = useState("");
   const modalRef = useRef();
 
+  
+
   useEffect(() => {
     axiosSecure
       .get(`/products/byId/${id}`)
@@ -178,7 +180,12 @@ const Details = () => {
       <div className="flex justify-end gap-3 mt-6">
         <button
           className="btn btn-primary"
-          onClick={() => modalRef.current.showModal()}
+          onClick={() => {
+            if (user) {
+              modalRef.current.showModal();
+            }
+            toast.warn("You must be logged in to import a product.")
+          }}
         >
           Import Product
         </button>
@@ -200,7 +207,7 @@ const Details = () => {
                     type="text"
                     name="name"
                     className="input w-full"
-                    defaultValue={user.displayName}
+                    defaultValue={user?.displayName}
                     readOnly
                   />
                 </div>
@@ -211,7 +218,7 @@ const Details = () => {
                     type="text"
                     className="input w-full"
                     name="email"
-                    defaultValue={user.email}
+                    defaultValue={user?.email}
                     readOnly
                   />
                 </div>

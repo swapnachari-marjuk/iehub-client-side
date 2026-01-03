@@ -56,9 +56,7 @@ const router = createBrowserRouter([
       {
         path: "/viewDetails/:id",
         element: (
-          <PrivetRout>
             <Details />
-          </PrivetRout>
         ),
       },
 

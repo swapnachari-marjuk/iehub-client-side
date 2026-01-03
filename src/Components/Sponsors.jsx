@@ -2,14 +2,14 @@ import Marquee from "react-fast-marquee";
 
 const Sponsors = () => {
   return (
-    <section className=" py-10 px-4">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-700 dark:text-white">
+    <section className="my-16 px-4">
+      <h2 className="text-3xl font-bold text-center text-gray-700 dark:text-white">
         Our Trusted Sponsors
       </h2>
 
-      <Marquee>
+      <Marquee className="py-5" pauseOnClick={true}>
         {/*  sponsor-1 */}
-        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600  shadow-md rounded-xl mx-6 p-6 w-72 hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600  shadow-sm rounded-xl mx-6 p-6 w-72 hover:shadow-md transition-all duration-300">
           <figure className="w-60 h-60">
             <img
               src="https://paribhramon.com/wp-content/uploads/2025/02/DHL-Courier-Service-Mobile-Number-and-All-Branch-Address-in-Bangladesh.jpg"
@@ -26,7 +26,7 @@ const Sponsors = () => {
         </div>
 
         {/*  sponsor-2 */}
-        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600 shadow-md rounded-xl mx-6 p-6 w-72 hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600 shadow-sm rounded-xl mx-6 p-6 w-72 hover:shadow-md transition-all duration-300">
           <figure className="w-60 h-60">
             <img
               src="https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/miscellaneous/alibaba-logo-09052018084008.jpg&w=360&height=360"
@@ -43,7 +43,7 @@ const Sponsors = () => {
         </div>
 
         {/*  sponsor-3 */}
-        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600 shadow-md rounded-xl mx-6 p-6 w-72 hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600 shadow-sm rounded-xl mx-6 p-6 w-72 hover:shadow-md transition-all duration-300">
           <figure className="w-60 h-60">
             <img
               src="https://www.ttnews.com/sites/default/files/styles/social_media_1200x630/public/2023-10/Flexport-1200.jpg"
@@ -60,7 +60,7 @@ const Sponsors = () => {
         </div>
 
         {/* sponsor-4 */}
-        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600 shadow-md rounded-xl mx-6 p-6 w-72 hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-600 shadow-sm rounded-xl mx-6 p-6 w-72 hover:shadow-md transition-all duration-300">
           <figure className="w-60 h-60">
             <img
               src="https://mma.prnewswire.com/media/2319256/4496202/Freightos_Logo.jpg?p=facebook"

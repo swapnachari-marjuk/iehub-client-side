@@ -2,8 +2,13 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const Mentorship = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    toast("Thank you for register.");
+    e.target.reset();
+  };
   return (
-    <section className="py-16 px-6 mt-12 shadow-2xl">
+    <section className="py-16 px-6 mt-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Text */}
         <div className="text-center md:text-left">
@@ -21,7 +26,10 @@ const Mentorship = () => {
         </div>
 
         {/* Form */}
-        <div className="bg-white dark:bg-gray-600 p-8 rounded-2xl shadow-md w-full">
+        <form
+          onSubmit={handleRegister}
+          className="bg-white dark:bg-gray-600 p-8 rounded-2xl shadow-sm w-full"
+        >
           <h3 className="text-xl font-semibold text-gray-700 dark:text-white mb-6 text-center">
             Register for Free Mentorship
           </h3>
@@ -32,6 +40,7 @@ const Mentorship = () => {
             </label>
             <input
               type="text"
+              required={true}
               placeholder="Enter your full name"
               className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 outline-none"
             />
@@ -43,6 +52,7 @@ const Mentorship = () => {
             </label>
             <input
               type="email"
+              required={true}
               placeholder="example@email.com"
               className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 outline-none"
             />
@@ -54,19 +64,19 @@ const Mentorship = () => {
             </label>
             <input
               type="tel"
+              required={true}
               placeholder="Your phone number"
               className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 outline-none"
             />
           </div>
 
           <button
-          onClick={()=>toast("Thank you for register.")}
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all"
+            className="w-full btn btn-primary text-white font-semibold py-3 rounded-lg transition-all"
           >
             Join Now
           </button>
-        </div>
+        </form>
       </div>
     </section>
   );

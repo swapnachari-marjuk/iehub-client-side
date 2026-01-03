@@ -2,13 +2,15 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex justify-center items-center py-5">
-      <div className="flex w-52 flex-col gap-4">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 py-5">
+      {[...Array(9)].map((_, index) => (
+        <div key={index} className="flex w-52 flex-col gap-4">
+          <div className="skeleton h-32 w-full"></div>
+          <div className="skeleton h-4 w-28"></div>
+          <div className="skeleton h-4 w-full"></div>
+          <div className="skeleton h-4 w-full"></div>
+        </div>
+      ))}
     </div>
   );
 };
