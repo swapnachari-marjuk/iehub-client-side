@@ -10,6 +10,7 @@ import AllProducts from "../Pages/AllProducts";
 import Details from "../Pages/Details";
 import PrivetRout from "./PrivetRout";
 import Loading from "../Components/Loading";
+import DashLayout from "../Layouts/DashLayout";
 
 const router = createBrowserRouter([
   {
@@ -29,35 +30,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/myImport",
-        element: (
-          <PrivetRout>
-            <MyImport />
-          </PrivetRout>
-        ),
-      },
-      {
-        path: "/myExport",
-        element: (
-          <PrivetRout>
-            <MyExport />
-          </PrivetRout>
-        ),
-      },
-      {
-        path: "/addExport",
-        element: (
-          <PrivetRout>
-            <AddExport />
-          </PrivetRout>
-        ),
-      },
-
-      {
         path: "/viewDetails/:id",
-        element: (
-            <Details />
-        ),
+        element: <Details />,
       },
 
       {
@@ -67,6 +41,38 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: DashLayout,
+    children: [
+      {
+        path: "myImport",
+        element: (
+          <PrivetRout>
+            <MyImport />
+          </PrivetRout>
+        ),
+      },
+
+      {
+        path: "myExport",
+        element: (
+          <PrivetRout>
+            <MyExport />
+          </PrivetRout>
+        ),
+      },
+
+      {
+        path: "addExport",
+        element: (
+          <PrivetRout>
+            <AddExport />
+          </PrivetRout>
+        ),
       },
     ],
   },

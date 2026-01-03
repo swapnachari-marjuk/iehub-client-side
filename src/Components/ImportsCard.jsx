@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ImportsCard = ({ product, onDelete }) => {
   const axiosSecure = useAxiosSecure();
@@ -18,13 +19,26 @@ const ImportsCard = ({ product, onDelete }) => {
   } = product;
 
   const handleDelete = () => {
-    axiosSecure
-      .delete(`/imports/${_id}`)
-      .then(() => {
-        toast.warning("Product is deleted!")
-        onDelete(_id);
-      })
-      .catch((err) => console.log(err));
+    Swal.fire({
+      title: "Are you want to delete this product?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3944bc",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("product deleted.");
+        axiosSecure
+          .delete(`/imports/${_id}`)
+          .then(() => {
+            toast.warning("Product is deleted!");
+            onDelete(_id);
+          })
+          .catch((err) => console.log(err));
+      }
+    });
   };
 
   return (
@@ -46,8 +60,12 @@ const ImportsCard = ({ product, onDelete }) => {
 
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-          <p className="text-blue-600 dark:text-blue-400 font-semibold text-base">${price}</p>
-          <p className="text-gray-500 dark:text-gray-300 text-sm">Quantity {import_quantity}</p>
+          <p className="text-blue-600 dark:text-blue-400 font-semibold text-base">
+            ${price}
+          </p>
+          <p className="text-gray-500 dark:text-gray-300 text-sm">
+            Quantity {import_quantity}
+          </p>
         </div>
 
         {/* Rating & Country */}

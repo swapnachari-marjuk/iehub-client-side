@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
 import { CircleLoader } from "react-spinners";
+import { LuLogOut } from "react-icons/lu";
+import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
@@ -19,12 +21,35 @@ const Navbar = () => {
   const handleTheme = (checked) => {
     setTheme(checked ? "dark" : "light");
   };
+
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0041c2",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        userSignOut()
+          .then(() =>
+            Swal.fire({
+              title: "LoggedOut",
+              text: "You are logged out successfully",
+              icon: "success",
+            })
+          )
+          .catch((err) => toast.warning(err));
+      }
+    });
+  };
   const links = (
     <>
       <li>
         <NavLink to={"/allProducts"}>All Products</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to={"/myImport"}>My Import</NavLink>
       </li>
       <li>
@@ -32,7 +57,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to={"/addExport"}>Add Export</NavLink>
-      </li>
+      </li> */}
     </>
   );
   return (
@@ -84,42 +109,41 @@ const Navbar = () => {
           {loading ? (
             <CircleLoader color="#0707f4" size={30} speedMultiplier={0} />
           ) : user ? (
-            <div className="flex gap-2 items-center">
-              <img
-                title={user.displayName}
-                className="md:w-10 w-8 rounded-full"
-                src={user.photoURL}
-                alt=""
-              />
-              <button
-                className="btn lg:btn md:btn-sm btn-xs btn-primary"
-                onClick={
-                  () =>
-                    Swal.fire({
-                      title: "Are you sure to logout?",
-                      icon: "warning",
-                      showCancelButton: true,
-                      confirmButtonColor: "#3085d6",
-                      cancelButtonColor: "#d33",
-                      confirmButtonText: "Logout",
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        userSignOut()
-                          .then(() =>
-                            Swal.fire({
-                              title: "LoggedOut",
-                              text: "You are logged out successfully",
-                              icon: "success",
-                            })
-                          )
-                          .catch((err) => toast.warning(err));
-                      }
-                    })
-                  //
-                }
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="m-1">
+                <img
+                  title={user.displayName}
+                  className="md:w-10 w-8 rounded-full"
+                  src={user.photoURL}
+                  alt={user.displayName}
+                />
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow-sm"
               >
-                LogOut
-              </button>
+                <li>
+                  <p className="flex justify-center items-center">
+                    <img
+                      title={user.displayName}
+                      className="md:w-10 w-8 rounded-full"
+                      src={user.photoURL}
+                      alt={user.displayName}
+                    />
+                  </p>
+                </li>
+                <li>
+                  <Link to={"/dashboard"}>
+                    <HiOutlineWrenchScrewdriver />
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>
+                    <LuLogOut /> LogOut
+                  </button>
+                </li>
+              </ul>
             </div>
           ) : (
             <div>

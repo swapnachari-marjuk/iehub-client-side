@@ -15,8 +15,6 @@ const Details = () => {
   const [importQuantity, setImportQuantity] = useState("");
   const modalRef = useRef();
 
-  
-
   useEffect(() => {
     axiosSecure
       .get(`/products/byId/${id}`)
@@ -183,8 +181,9 @@ const Details = () => {
           onClick={() => {
             if (user) {
               modalRef.current.showModal();
+            } else {
+              toast.warn("You must be logged in to import a product.");
             }
-            toast.warn("You must be logged in to import a product.")
           }}
         >
           Import Product
