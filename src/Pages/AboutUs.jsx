@@ -61,7 +61,7 @@ const AboutUs = () => {
 
       <section
         ref={missionRef}
-        className="py-16 bg-gray-50 dark:bg-gray-900 scroll-mt-4"
+        className="py-16 scroll-mt-4"
       >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">

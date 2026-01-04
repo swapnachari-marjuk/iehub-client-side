@@ -33,7 +33,7 @@ const MyImport = () => {
     return (
       <div className="flex justify-center items-center py-10">
         <title>IEHub || My Import</title>
-        <div className="bg-gray-100 p-5 rounded-2xl text-center text-gray-500">
+        <div className="bg-gray-100 p-5 dark:bg-gray-800 rounded-2xl text-center text-gray-500 dark:text-white">
           <h2 className="font-bold text-2xl">
             You have not imported any products yet.
           </h2>

@@ -1,49 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "./Utility/Logo";
 import useAuth from "../hooks/useAuth";
 import { CircleLoader } from "react-spinners";
 import { LuLogOut } from "react-icons/lu";
 import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import ThemeBtn from "./Utility/ThemeBtn";
+import UserDropdown from "./Utility/UserDropdown";
 
 const Navbar = () => {
-  const { loading, user, userSignOut } = useAuth();
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const { loading, user } = useAuth();
 
-  useEffect(() => {
-    const html = document.documentElement;
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const handleTheme = (checked) => {
-    setTheme(checked ? "dark" : "light");
-  };
-
-  const handleLogOut = () => {
-    Swal.fire({
-      title: "Are you sure to logout?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#0041c2",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Logout",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        userSignOut()
-          .then(() =>
-            Swal.fire({
-              title: "LoggedOut",
-              text: "You are logged out successfully",
-              icon: "success",
-            })
-          )
-          .catch((err) => toast.warning(err));
-      }
-    });
-  };
   const links = (
     <>
       <li>
@@ -99,52 +67,11 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <input
-            onChange={(e) => handleTheme(e.target.checked)}
-            type="checkbox"
-            defaultChecked={localStorage.getItem("theme") === "dark"}
-            className="toggle mr-2"
-          />
-
+          <ThemeBtn />
           {loading ? (
             <CircleLoader color="#0707f4" size={30} speedMultiplier={0} />
           ) : user ? (
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="m-1">
-                <img
-                  title={user.displayName}
-                  className="md:w-10 w-8 rounded-full"
-                  src={user.photoURL}
-                  alt={user.displayName}
-                />
-              </div>
-              <ul
-                tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow-sm"
-              >
-                <li>
-                  <p className="flex justify-center items-center">
-                    <img
-                      title={user.displayName}
-                      className="md:w-10 w-8 rounded-full"
-                      src={user.photoURL}
-                      alt={user.displayName}
-                    />
-                  </p>
-                </li>
-                <li>
-                  <Link to={"/dashboard"}>
-                    <HiOutlineWrenchScrewdriver />
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={handleLogOut}>
-                    <LuLogOut /> LogOut
-                  </button>
-                </li>
-              </ul>
-            </div>
+            <UserDropdown />
           ) : (
             <div>
               <Link to={"/register"} className="btn lg:btn btn-sm btn-primary">

@@ -38,7 +38,7 @@ const Services = () => {
     },
   ];
   return (
-    <div className="py-12 bg-gray-50 dark:bg-gray-900">
+    <div className="py-12 bg-gray-50 dark:bg-gray-950">
       <div className="container mx-auto px-4">
         {/* Title Section */}
         <h2 className="text-3xl md:text-4xl text-center font-bold text-gray-800 dark:text-white mb-16">

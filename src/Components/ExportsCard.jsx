@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ExportsCard = ({ product, onDelete }) => {
   const modalRef = useRef();
@@ -59,7 +60,7 @@ const ExportsCard = ({ product, onDelete }) => {
         setCountry(formData.origin);
         setPRating(formData.rating);
         setQuantity(formData.available_quantity);
-        toast.success("Product updated successfully.")
+        toast.success("Product updated successfully.");
         modalRef.current.close();
       })
       .catch((err) => console.log(err));
@@ -67,18 +68,35 @@ const ExportsCard = ({ product, onDelete }) => {
 
   //
   const handleDelete = (id) => {
-    axiosSecure
-      .delete(`/products/deleteId/${id}`)
-      .then(() => {
-        onDelete(id);
-        toast.warning("Deleted this item.")
-        // console.log(result);
-      })
-      .catch((err) => console.log(err));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      theme: "dark",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .delete(`/products/deleteId/${id}`)
+          .then(() => {
+            onDelete(id);
+            toast.warning("Deleted this item.");
+
+            // console.log(result);
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error("Something went wrong. Item can't delete.");
+          });
+      }
+    });
   };
 
   return (
-    <div className="card bg-white dark:bg-gray-600 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
+    <div className="card bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
       {/* product image */}
       <figure className="h-60 bg-gray-50 flex items-center justify-center">
         <img className="h-full object-contain" src={image} alt={name} />
@@ -92,8 +110,12 @@ const ExportsCard = ({ product, onDelete }) => {
 
         {/* Price & Availability */}
         <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-          <p className="text-blue-600 dark:text-blue-300 font-semibold text-base">${pPrice}</p>
-          <p className="text-gray-500 dark:text-white text-sm">Only {quantity} left</p>
+          <p className="text-blue-600 dark:text-blue-300 font-semibold text-base">
+            ${pPrice}
+          </p>
+          <p className="text-gray-500 dark:text-white text-sm">
+            Only {quantity} left
+          </p>
         </div>
 
         {/* Rating & Country */}
@@ -109,7 +131,10 @@ const ExportsCard = ({ product, onDelete }) => {
         >
           Update
         </button>
-        <button onClick={() => handleDelete(_id)} className="btn">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn dark:bg-gray-700"
+        >
           Delete
         </button>
       </div>

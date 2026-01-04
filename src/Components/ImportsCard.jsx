@@ -27,6 +27,7 @@ const ImportsCard = ({ product, onDelete }) => {
       confirmButtonColor: "#3944bc",
       cancelButtonColor: "#d33",
       confirmButtonText: "Delete it!",
+      theme: 'dark'
     }).then((result) => {
       if (result.isConfirmed) {
         console.log("product deleted.");
@@ -42,9 +43,9 @@ const ImportsCard = ({ product, onDelete }) => {
   };
 
   return (
-    <div className="card bg-white dark:bg-gray-600 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
+    <div className="card bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden">
       {/* product image */}
-      <figure className="h-60 bg-gray-50 flex items-center justify-center">
+      <figure className="h-60 bg-gray-50 dark:bg-gray-700 flex items-center justify-center">
         <img
           className="h-full object-contain"
           src={product_image}
@@ -82,7 +83,7 @@ const ImportsCard = ({ product, onDelete }) => {
           >
             View Details
           </Link>
-          <button onClick={handleDelete} className="btn w-full">
+          <button onClick={handleDelete} className="btn w-full dark:bg-gray-700">
             Delete
           </button>
         </div>

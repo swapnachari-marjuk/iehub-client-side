@@ -37,7 +37,7 @@ const MyExport = () => {
     return (
       <div className="flex justify-center items-center py-10">
         <title>IEHub || My Export</title>
-        <div className="bg-gray-100 p-5 rounded-2xl text-center text-gray-500">
+        <div className="bg-gray-100 dark:bg-gray-800 p-5 rounded-2xl text-center text-gray-500 dark:text-white">
           <h2 className="font-bold text-2xl">
             You have not exported any products yet.
           </h2>
