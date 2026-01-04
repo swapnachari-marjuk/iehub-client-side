@@ -74,7 +74,7 @@ const Details = () => {
       supplier_email,
       import_quantity,
       total_cost: price * import_quantity,
-      imported_at: new Date().toLocaleTimeString(),
+      imported_at: new Date(),
       import_country,
     };
     // console.log(importData);

@@ -19,7 +19,7 @@ const Register = () => {
     const password = form.password.value;
 
     if (!passwordRegex.test(password)) {
-      alert("Password is not valid.");
+      toast.warn("Password is not valid.");
       return;
     }
 

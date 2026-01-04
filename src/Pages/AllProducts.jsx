@@ -52,7 +52,7 @@ const AllProducts = () => {
         <input
           name="search"
           className="input join-item"
-          placeholder="🔎Search by name"
+          placeholder="🔎Search"
         />
         <button className="btn join-item btn-primary">Search</button>
       </form>
