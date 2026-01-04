@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -6,13 +7,13 @@ const Footer = () => {
       <footer className="footer footer-horizontal footer-center bg-base-200 rounded p-10">
         <ul className="grid grid-flow-col gap-4">
           <li>
-            <a>About us</a>
+            <Link to={"/services"}>Services</Link>
           </li>
           <li>
-            <a>Contact</a>
+            <Link to={"/aboutUs"}>About Us</Link>
           </li>
           <li>
-            <a>Jobs</a>
+            <Link to={"/contact"}>Contact</Link>
           </li>
           <li>
             <a>Press kit</a>
@@ -59,7 +60,8 @@ const Footer = () => {
         <aside>
           <p>Developed By Ahmad M.</p>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by Developer.
+            Copyright © {new Date().getFullYear()} - All right reserved by
+            Developer.
           </p>
         </aside>
       </footer>
