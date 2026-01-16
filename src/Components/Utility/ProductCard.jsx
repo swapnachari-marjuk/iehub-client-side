@@ -13,14 +13,21 @@ const ProductCard = ({ product }) => {
   } = product || {};
 
   return (
-  <div className="card bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden dark:border dark:border-gray-700">
+    <div className="card bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-transform transform hover:-translate-y-1 rounded-xl overflow-hidden dark:border dark:border-gray-700">
       {/* product image */}
       <figure className="h-60 bg-gray-50 dark:bg-gray-700 flex items-center justify-center">
-        <img
-          className="h-full object-contain"
-          src={product_image}
-          alt={product_name}
-        />
+        {
+          product_image ?
+            <img
+              className="h-full object-contain"
+              src={product_image}
+              alt={product_name}
+            />
+            :
+            <div className="h-full w-full bg-blue-200 flex justify-center items-center">
+              <strong className="font-bold text-red-500 ">Image not found</strong>
+            </div>
+        }
       </figure>
 
       <div className="flex flex-col p-5 space-y-3">
