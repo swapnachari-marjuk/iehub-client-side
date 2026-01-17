@@ -1,43 +1,39 @@
 import React, { useEffect, useState } from "react";
-import useAxios from "../hooks/useAxios";
 import ProductCard from "../Components/Utility/ProductCard";
-import useAuth from "../hooks/useAuth";
 import Loading from "../Components/Loading";
-import { useLoaderData } from "react-router";
+import useAxios from "../hooks/useAxios";
 
 const AllProducts = () => {
-  const data = useLoaderData();
-  const axiosInstance = useAxios();
-  const { loading } = useAuth();
-  const [allData, setAllData] = useState([]);
-  const [pageLoading, setPageLoading] = useState(true);
+  const axiosInstance = useAxios()
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('')
+
 
   useEffect(() => {
-    setPageLoading(false);
-    setAllData(data);
-  }, [data]);
+    const fetchData = async (search) => {
+      console.log(search);
+      try {
+        const res = await axiosInstance(`/products?search=${search}`)
+        const data = res.data
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData(search);
+  }, [search, axiosInstance]);
 
   const handleSearch = (e) => {
-    // setPageLoading(true);
-    e.preventDefault();
-    const searchValue = e.target.search.value;
-    if (!searchValue) {
-      setPageLoading(false);
-      setAllData(data);
-
-      return;
-    }
-    axiosInstance
-      .get(`/search/${searchValue}`)
-      .then((res) => {
-        setPageLoading(false);
-        setAllData(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  if (loading || pageLoading) {
-    return <Loading />;
+    e.preventDefault()
+    const form = e.target
+    const searchValue = form.search.value
+    console.log("btn clicked");
+    console.log(searchValue);
+    setSearch(searchValue)
   }
 
   return (
@@ -52,16 +48,36 @@ const AllProducts = () => {
         <input
           name="search"
           className="input join-item"
-          placeholder="🔎Search"
+          placeholder="🔎 Search"
         />
         <button className="btn join-item btn-primary">Search</button>
       </form>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">
-        {allData.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
-        ))}
-      </div>
+
+      {loading ?
+        <Loading />
+        : products.length === 0 ?
+          (
+            <div className="flex justify-center items-center py-10">
+              <div className="bg-gray-100 p-5 dark:bg-gray-800 rounded-2xl text-center text-gray-500 dark:text-white">
+                <h2 className="font-bold text-2xl">
+                  No data found
+                </h2>
+              </div>
+            </div>
+          )
+          :
+          (
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 my-10 gap-5">
+              {products.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                />
+              ))}
+            </div>
+          )
+      }
     </div>
   );
 };

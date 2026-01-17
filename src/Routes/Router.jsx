@@ -28,8 +28,12 @@ const router = createBrowserRouter([
       {
         path: "/allProducts",
         element: <AllProducts />,
-        loader: () => fetch(`https://iehub-api-server.vercel.app/products`),
-        hydrateFallbackElement: <Loading />,
+        // loader: async () => {
+        //   const productsPromise = await fetch(`https://iehub-api-server.vercel.app/products`)
+        //     .then(res => res.json());
+        //   return { products: productsPromise };
+        // },
+        // hydrateFallbackElement: <Loading />,
       },
 
       {
