@@ -99,27 +99,34 @@ const Details = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto my-10 bg-white dark:bg-gray-600 shadow-md rounded-xl p-6">
+    <div className="max-w-5xl mx-auto my-10 bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
       <title>IEHub || Details</title>
       {/* Product Image & Info Section */}
       <div className="flex flex-col lg:flex-row gap-8">
-        <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-lg">
-          <img
-            src={product_image}
-            alt={product_name}
-            className="w-full max-w-sm object-contain rounded-lg"
-          />
+        <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+          {
+            product_image ? 
+            <img
+              src={product_image}
+              alt={product_name}
+              className="w-full max-w-sm object-contain rounded-lg"
+            /> 
+            : 
+            <div className="w-full bg-blue-200">
+
+            </div>
+          }
         </div>
 
-        <div className="flex-1 space-y-3">
+        <div className="flex-1 space-y-3 dark:text-white">
           <h1 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
             {product_name}
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-200 italic">
+          <p className="text-sm text-gray-500  dark:text-blue-100 italic">
             {category} • {brand}
           </p>
 
-          <p className="text-3xl font-bold text-blue-600 dark:text-blue-300">
+          <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
             ${price}
           </p>
 
@@ -138,7 +145,7 @@ const Details = () => {
             </p>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-200 mt-3 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 mt-3 text-sm leading-relaxed italic">
             {description}
           </p>
 
@@ -160,11 +167,11 @@ const Details = () => {
       </div>
 
       {/* Supplier Info */}
-      <div className="mt-8 bg-gray-50 dark:bg-gray-400 p-4 rounded-lg">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">
+      <div className="mt-8 bg-gray-50 dark:bg-gray-900/30 p-4 rounded-lg dark:border-gray-700">
+        <h2 className="text-lg font-semibold text-gray-800 dark:text-blue-400 mb-2">
           Supplier Information
         </h2>
-        <div className="text-gray-600 space-y-1">
+        <div className="text-gray-600 space-y-1 dark:text-gray-300">
           <p>
             <span className="font-medium">Name:</span> {supplier_name}
           </p>

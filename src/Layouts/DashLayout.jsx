@@ -128,7 +128,7 @@ const DashLayout = () => {
               <Link
                 to={"/dashboard/addExport"}
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Exports"
+                data-tip="Export Product"
               >
                 <MdAddShoppingCart />
                 <span className="is-drawer-close:hidden">My Exports</span>

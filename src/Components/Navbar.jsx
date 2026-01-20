@@ -79,7 +79,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to={"login"}
-                className="btn btn-ghost lg:btn btn-sm  btn-outline text-primary"
+                className="btn btn-ghost lg:btn btn-sm text-primary"
               >
                 Login
               </Link>
