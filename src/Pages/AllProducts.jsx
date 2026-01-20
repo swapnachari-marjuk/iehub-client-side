@@ -7,6 +7,7 @@ const AllProducts = () => {
   const axiosInstance = useAxios()
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
   const [dataCount, setDataCount] = useState(0)
@@ -15,10 +16,22 @@ const AllProducts = () => {
 
 
   useEffect(() => {
-    const fetchData = async (search, page) => {
+
+    const debounceFn = setTimeout(() => {
+      setSearchTerm(search)
+      console.log("calling api with", search);
+    }, 500)
+
+    return () => clearTimeout(debounceFn)
+  }, [search])
+
+
+  useEffect(() => {
+    const fetchData = async (searchTerm, page) => {
       setLoading(true)
+
       try {
-        const res = await axiosInstance(`/products?search=${search}&page=${page}&limit=${limit}`)
+        const res = await axiosInstance(`/products?search=${searchTerm}&page=${page}&limit=${limit}`)
         setProducts(res.data.result);
         setDataCount(res.data.dataCount)
       } catch (error) {
@@ -28,35 +41,22 @@ const AllProducts = () => {
       }
     };
 
-    fetchData(search, page);
-  }, [search, page, axiosInstance]);
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    const form = e.target
-    const searchValue = form.search.value
-    console.log("btn clicked");
-    console.log(searchValue);
-    setSearch(searchValue)
-  }
+    fetchData(searchTerm, page);
+  }, [searchTerm, page, axiosInstance]);
 
   return (
     <div>
       <title>IEHub | All Products</title>
       <h2 className="md:text-xl font-bold text-center mt-5">All Products</h2>
 
-      <form
-        onSubmit={handleSearch}
-        className="flex justify-center items-center mt-3"
-      >
+      <div className="text-center">
         <input
           name="search"
           className="input join-item"
           placeholder="🔎 Search"
+          onChange={(e) => { e.preventDefault(); setSearch(e.target.value) }}
         />
-        <button className="btn join-item btn-primary">Search</button>
-      </form>
-
+      </div>
 
       {loading ?
         <Loading />
@@ -96,7 +96,7 @@ const AllProducts = () => {
 
         {/* Page Indicator */}
         <div className="text-sm font-semibold text-gray-700 bg-gray-100 px-4 py-2 rounded-full border border-gray-200">
-          Page <span className="text-blue-600">{page}</span> of <span className="text-gray-900">{totalPages}</span>
+          Page <span className="text-blue-600">{page || 0}</span> of <span className="text-gray-900">{totalPages || 1}</span>
         </div>
 
         {/* Next Button */}
