@@ -34,10 +34,10 @@ const UserDropdown = () => {
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="m-1">
         <img
-          title={user.displayName}
+          title={user?.displayName}
           className="md:w-10 w-8 rounded-full"
-          src={user.photoURL}
-          alt={user.displayName}
+          src={user?.photoURL}
+          alt={user?.displayName}
         />
       </div>
       <ul
@@ -47,10 +47,10 @@ const UserDropdown = () => {
         <li>
           <p className="flex justify-center items-center">
             <img
-              title={user.displayName}
+              title={user?.displayName}
               className="md:w-10 w-8 rounded-full"
-              src={user.photoURL}
-              alt={user.displayName}
+              src={user?.photoURL}
+              alt={user?.displayName}
             />
           </p>
         </li>

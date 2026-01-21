@@ -49,7 +49,7 @@ const AllProducts = () => {
       <title>IEHub | All Products</title>
       <h2 className="md:text-xl font-bold text-center mt-5">All Products</h2>
 
-      <div className="text-center">
+      <div className="text-center mt-8">
         <input
           name="search"
           className="input join-item"
